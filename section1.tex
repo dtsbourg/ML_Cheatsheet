@@ -1,0 +1,235 @@
+%!TEX root=master.tex
+%========================================================================================================
+% REGRESSION
+%========================================================================================================
+\section{Regression}
+\subsection{Linear Regression}
+Simple
+$y_n \approx f(\mathbf{x_n}) := w_0 + w_1 \mathbf{x_{n1}}$\newline
+Multiple
+$y_n \approx f(\mathbf{x_n}) := w_0 + \sum_{j=1}^D w_j x_{nj} = \tilde{\mathbf{x}}_n^T \mathbf{w}$
+If $D > N$ the task is under-determined (more dimensions than data) $\rightarrow$ regularization.
+
+\section{Cost functions}
+MSE $= \frac{1}{N} \sum_{n=1}^N [y_n - f(x_n)]^2$ Not good with outliers.
+MAE $= \frac{1}{N} \sum_{n=1}^N |y_n - f(x_n)|$
+\subsection{Convexity}
+A line joining two points never intersects with the function anywhere else.
+$f(\lambda u + (1-\lambda)v) \le \lambda f(u) + (1-\lambda) f(v)$ with $\lambda \in [0;1]$.
+A strictly convex function has a unique global minimum $w^*$. Sums of convex functions are convex.
+
+A function must always lie above its linearisation $\mathcal{L}(u) \ge \mathcal{L}(w) + \nabla \mathcal{L}(w)^T (u-w) \forall u,w$.
+
+A set is convex iff the line segment between any two points of $\mathcal{C}$ lies in $\mathcal{C}$ : $\theta u + (1 - \theta) v \in \mathcal{C}$ 
+
+%========================================================================================================
+% OPTIM
+%========================================================================================================
+\section{Optimisation}
+Gradient $\nabla \mathcal{L} := \begin{bmatrix} \frac{\partial \mathcal{L}(w)}{\partial w_1} & \dots & \frac{\partial \mathcal{L}(w)}{\partial w_D} \end{bmatrix}$
+
+\subsection{Gradient descent}
+
+$w^{(t+1)} = w^{(t)} - \gamma \nabla \mathcal{L}(w^{(t)})$. Very sensitive to ill-conditioning.
+
+GD - Linear Reg
+
+$\mathcal{L}(w) = \frac{1}{2N} (y - Xw)^T(y - Xw) \rightarrow$ \newline $ \nabla \mathcal{L}(w) = - \frac{1}{N} X^T(y - Xw)$.\newline Cost : $O_{error}(N*D) = 2N*D + N$ and $O_{weights} = 2N*D + D$.
+
+\subsection{SGD} 
+
+$\mathcal{L} = \frac{1}{N} \sum{\mathcal{L}}_n(w)$ with update $w^{(t+1)} = w^{(t)} - \gamma \nabla \mathcal{L}_n(w^{(t)})$.
+
+\subsection{Mini-batch SGD}
+
+$\mathbf{g} = \frac{1}{|B|} \sum_{n\in B}{\nabla \mathcal{L}}_n(w^{(t)})$ with update $w^{(t+1)} = w^{(t)} - \gamma \mathbf{g}$.
+
+\subsection{Subgradient at $w$}
+
+$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. Example subgradient for MAE : $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \text{ otherwise }}$. We get the gradient : $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(x_n) \nabla f(x_n)$.
+
+\subsection{Projected SGD}
+
+$w^{(t+1)} = \mathcal{P_C} [w^{(t)} - \gamma \nabla \mathcal{L}(w^{(t)})]$
+
+\subsection{Newton's method}
+Second order (more expensive $O(ND^2 + D^3)$ but faster convergence).
+
+$w^{(t+1)} = w^{(t)} - \gamma^{(t)} (H^{(t)})^{-1} \nabla \mathcal{L}(w^{(t)})$
+
+
+\subsection{Optimality conditions}
+Necessary : $\nabla \mathcal{L} (w^*) = 0$
+Sufficient : Hessian PSD $\mathbf{H}(w^*) := \frac{\partial^2 \mathcal{L}(w^*)}{\partial w \partial w^T}$
+
+%========================================================================================================
+% LEAST SQUARES
+%========================================================================================================
+
+\section{Least Squares}
+\subsection{Normal Equation}
+$X^T (y - Xw)= 0 \Rightarrow w^* = (XX^T)^{-1}X^Ty \text{ and } \hat{y}_m = x_m^T w^*$
+Gram matrix invertible iff rank(X) = D (use SVD if this is the case to get pseudo-inverse).
+
+\section{Likelihood}
+Probability of observing the data given a set of parameters and inputs :
+$p(y|X,w) = \prod p(y_n|x_n, w) = \prod \mathcal{N}(y_n | x_n^Tw, \sigma^2)$
+
+Best model maximises log-likelihood $\mathcal{L}_{LL} = -\frac{1}{2\sigma^2} \sum(y_n-x_n^Tw)^2+cst$.
+
+
+%========================================================================================================
+% REGULARISATION
+%========================================================================================================
+\section{Regularization}
+\subsection{Ridge Regression}
+$\mathcal{L}(w) = \frac{1}{2} (y - Xw)^T(y - Xw) + \frac{\lambda}{2} ||w||^2_2 \rightarrow$
+$w^*_{ridge} = (XX^T + \lambda I_D)^{-1}X^Ty = X^T(XX^T + \lambda I_N)^{-1}y$
+
+Can be considered a MAP estimator : $w^*_{ridge} = arg min_w - log(p(w|X,y))$
+
+\subsection{Lasso}
+Sparse solution.
+$\mathcal{L}(w) = \frac{1}{2N} (y - Xw)^T(y - Xw) + \lambda ||w||_1 $
+
+%========================================================================================================
+% MODEL SELECTION
+%========================================================================================================
+\section{Model Selection}
+\subsection{Bias-Variance decomposition}
+Small dimensions : large bias, small variance.
+Large dimensions : small bias, large variance.
+
+
+%========================================================================================================
+% CLASSIFICATION
+%========================================================================================================
+\section{Classification}
+\subsection{Optimal}
+$\hat{y}(x) = argmax_{y\in \mathcal{Y}} p(y|x)$
+
+\subsection{Logistic regression}
+$\sigma(z) = \frac{e^z}{1+e^z}$ to limit the predicted values $y\in [0;1]$ ($p(1|x) = \sigma(x^Tw)$ and $p(0|x) = 1-\sigma(x^Tw)$).
+
+Likelihood
+
+$p(y | X,w) = \prod p(y_n|x_n) = \prod_{n:y_n=0} p(y_n=0|x_n) ... \prod_{n:y_n=K} p(y_n=K|x_n) = \prod^K_k \prod^N_n [p(y_n = k | x_n,w)]^{\tilde{y}_{nk}}$ where ${tilde{y}_{nk}} = 1$ if $y_n=k$.
+
+For binary classification
+
+$p(y | X, w) = \prod p(y_n|x_n) = \prod_{n:y_n=0} p(y_n=0|x_n) \prod_{n:y_n=1} p(y_n=1|x_n) = \prod^N_n \sigma({x_n^T w})^{y_n}[1-\sigma({x_n^T w})]^{1-y_n}$
+
+Loss
+
+$\mathcal{L}(w) = \sum_{n=1}^N ln(1 + exp(x_n^T w)) - y_n x_n^T w$ which is convex in $w$.
+
+Gradient
+
+$\nabla \mathcal{L}(w) = \sum_{n=1}^N x_n (\sigma(x_n^T w) - y_n) = X^T[\sigma(Xw) - y]$ (no closed form solution).
+
+Hessian
+
+$H(w) = X^T S X$ with $S_{nn} = \sigma(x_n^T w)[1-\sigma(x_n^T w)]$
+
+\subsection{Exponential family}
+General form
+
+$p(y|\eta) = h(y) exp[\eta^T \psi(y) - A(\eta)]$ where
+
+Cumulant
+ 
+$A(\eta) = ln[\int_y h(y) exp[\eta^T \psi(y)] dy]$
+\newline
+$\nabla A(\eta) = \mathbb{E}[\psi(y)]$
+\newline
+$\nabla^2 A(\eta) = \mathbb{E}[\psi\psi^T] - \mathbb{E}[\psi]\mathbb{E}[\psi^T]$
+
+Link function
+
+$\eta = g^{-1}(\mu) \Leftrightarrow \mu = g(\eta)$
+
+\begin{itemize}
+\item $\eta_{gaussian} = (\mu / \sigma^2, - 1 / 2 \sigma^2)$
+\item $\eta_{poisson} = ln(\mu)$	
+\item $\eta_{bernoulli} = ln(\mu / 1 - \mu)$
+\item $\eta_{general} = g^{-1}(\frac{1}{N} \sum_{n=1}^N \psi(y_n))$
+\end{itemize}
+
+\subsection{Nearest Neighbor Models}
+Performs best in low dimensions. 
+\subsubsection{k-NN}
+$f_{S^{t,k}}(x) = \frac{1}{k} \sum_{n:x_n\in ngbh_{S{t,k}(x)}} y_n$
+Pick odd $k$ so there is a clear winner.
+Large $k \rightarrow$ large bias small variance (inv.)
+
+\subsubsection{Error bound}
+$\mathbb{E}[\mathcal{L}_{St}] \le 2 \mathcal{L}_{f^*} + 4 c \sqrt{d} N^{-1/d+1}$
+
+\subsection{Support Vector Machines (SVM)}
+Logistic regression with hinge loss :
+$min_w \sum_{n=1}^N [1-y_n x_n^T w]_+ + \frac{\lambda}{2} ||w||^2$ where $y \in [-1;1]$ is the label and $hinge(x)= max\{0,x\}$. Convex but not differentiable so need subgradient.
+
+We can also use duality : $\mathcal{L}(w) = max_{\alpha} G(w, \alpha)$. For SVM
+$min_{w} max_{\alpha \in [0,1]^N} \sum \alpha_n (1 - y_nx_n^Tw) + \frac{\lambda}{2} ||w||^2$ differentiable and convex.
+
+Can switch $max$ and $min$ when convex in $w$ and concave in $\alpha$. This can make the formulation simpler:
+
+$w(\alpha) = \frac{1}{\lambda} \sum \alpha_n y_n x_n = \frac{1}{\lambda} X^T diag(y) \alpha$ which yields the optimisation problem:
+$max_{\alpha \in [0,1]^N} \alpha^T\mathbf{1} - \frac{1}{2\lambda} \alpha^T Y X X^T Y \alpha$
+The solution is sparse ($\alpha_n$ is the slope of the lines that are lower bounds to the hingle loss).
+
+\subsection{Kernel Ridge Regression}
+From duality $w^* := X^T \alpha^*$ where $\alpha^* := (K + \lambda I_N)^{-1}y$ and $K=XX^T = \phi^T(x) \phi(x) = \kappa(x,x')$ (needs to be PSD and symmetric).
+
+
+%========================================================================================================
+% UNSUPERVISED LEARNING
+%========================================================================================================
+\section{Unsupervised Learning}
+\subsection{K-means clustering}
+
+$min \mathcal{L}(z,\mu) = \sum_n^N \sum_k^K z_{nk} ||x_n - \mu_k||^2_2$ with $z_{nk} \in \{0,1\}$ (unique assignments: $\sum_k z_{nk} = 1$).
+
+Algorithm (Coordinate Descent)
+\begin{enumerate}
+\item $\forall n$ compute $z_n = \begin{cases} 
+	1 \text{ if } k = argmin_j || x_n - \mu||^2 \\
+	0 \text{ otherwise }
+   \end{cases}$
+\item $\forall k$ compute $\mu_k = \frac{\sum_n z_{nk} x_n}{\sum_n z_{nk}}$
+\end{enumerate}
+
+Issues
+\begin{enumerate}
+	\item Heavy computation
+	\item Spherical clusters
+	\item Hard clusters
+\end{enumerate}
+
+Probabilistic model
+$p(X|\mu,z) = \prod_n^N \mathcal{N}(x_n|\mu_k,I) = \prod_n^N \prod_k^K \mathcal{N}(x_n|\mu_k,I)^{z_{nk}}$ 
+
+\subsection{Gaussian Mixture Models}
+$p(X|\mu,z) = \prod_n^N p(x_n|z_n,\mu_k,\Sigma_k)p(z_n|\pi) 
+= \prod_n^N \prod_k^K [\mathcal{N}(x_n|\mu_k,\Sigma_k)]^{z_{nk}} \prod_k^K [\pi_k]^{z_{nk}}$ where $pi_k = p(z_n=k)$
+
+Marginal likelihood: $z_n$ are latent variables so they can be factored out from the likelihood $p(x_n|\theta) = \sum \pi_k \mathcal{N}(x_n|\mu_k, \Sigma_k)$. (number of parameters reduced from $O(N)$ to $O(D^2K)$.
+
+\subsection{EM}
+\subsubsection{GMM}
+Intialize $\mu^{(1)}, \Sigma^{(1)}, \pi^{(1)}$.
+\begin{enumerate}
+\item E-step: Compute the assignments. $q_{kn}^{(t)} := \frac{\pi_k^{(t)} \mathcal{N}(x_n|\mu_k^{(t)}, \Sigma_k^{(t)})}{ \sum_k^K \pi_k^{(t)} \mathcal{N}(x_n|\mu_k^{(t)}, \Sigma_k^{(t)}) }$
+\item Compute Marginal Likelihood
+\item M-step: Update 
+
+$\mu^{(t+1)} = \frac{\sum_n q_{kn}^{(t)} x_n}{\sum_n q_{kn}^{(t)}}$
+
+$\Sigma^{(t+1)} = \frac{\sum_n q_{kn}^{(t)}(x_n - \mu^{(t+1)})(x_n - \mu^{(t+1)})^T}{\sum_n q_{kn}^{(t)}}$
+
+$\pi^{(t+1)} = \frac{1}{N} \sum_n q_{kn}^{(t)}$
+\end{enumerate}
+
+\subsubsection{General}
+$\theta^{(t+1)} := argmax_{\theta} \sum_n^N \mathbb{E}_{p(z_n|x_n,\theta^{(t)})}[log\,\, p(x_n,z_n|\theta)]$
+
