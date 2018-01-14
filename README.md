@@ -17,6 +17,8 @@ Cheatsheet for CS-433 (Machine Learning)
 * [ ] SVD + PCA
 * [ ] Neural Nets
 
+It still needs quite a bit of clean-up, but that will be done once content is all there. Feel free to start !
+
 # Contributing
 
 If you're taking this class and feel like there is a mistake or would like to add something, feel free to create an
@@ -30,4 +32,4 @@ I am just transcribing this stuff.
 
 # Acknowledgments
 
-Thanks to Tim for the awesome LaTeX template ! [Stackoverflow answer](https://stackoverflow.com/questions/1911516/how-to-make-cheat-sheets-in-latex)
+Thanks to Tim for the awesome LaTeX template ! [StackOverflow answer](https://stackoverflow.com/questions/1911516/how-to-make-cheat-sheets-in-latex)
