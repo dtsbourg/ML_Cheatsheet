@@ -15,9 +15,21 @@ Joint distribution $p(x,y) = p(x|y)p(y)=p(y|x)p(x)$ where
 \begin{itemize}
 \item $p(x|y) \rightarrow$ likelihood 
 \item $p(y) \rightarrow$ prior
-\item $p(y|x) \rightarrow$ marginal likelihood
-\item $p(x) \rightarrow$ posterior
+\item $p(y|x) \rightarrow$ posterior
+\item $p(x) \rightarrow$ marginal likelihood
 \end{itemize}
+
+Marginal Likelihood \newline $p({\mathbb  {X}}|\alpha )=\int _{\theta }p({\mathbb  {X}}|\theta )\,p(\theta |\alpha )\ \operatorname {d}\!\theta $
+
+Posterior probability $\propto$ Likelihood $\times$ Prior
+
+Maximising over a Gaussian is equivalent to minimising MSE: $\beta_{MAP}^* = arg max_{\beta} p(y|X,\beta)p(\beta) \Leftrightarrow \beta^* = arg min_{\beta} \mathcal{L}(\beta)$
+
+Identifiable model $\theta_1 = \theta_2 \rightarrow P_{\theta_1} = P_{\theta_2}$
 
 \subsection{Algebra}
 $(PQ + I_N)^{-1} P = P (QP + I_M)^{-1}$
+
+$\sum_n (y_{n} -\mathbf{\beta}^T\mathbf{x_n})^2 = (\mathbf{y} - \mathbf{X}\mathbf{\beta})^T(\mathbf{y} - \mathbf{X}\mathbf{\beta})$
+
+$\sum_j \beta^2 = \mathbf{\beta}^T \mathbf{\beta}$

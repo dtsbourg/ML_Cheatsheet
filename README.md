@@ -36,7 +36,8 @@ Thanks to Tim for the awesome LaTeX template ! [StackOverflow answer](https://st
 
 # Sneakpeek
 
-![](https://github.com/dtsbourg/ML_Cheatsheet/raw/master/figs/sneak.png)
+![](https://github.com/dtsbourg/ML_Cheatsheet/raw/master/figs/sneak1.png)
+![](https://github.com/dtsbourg/ML_Cheatsheet/raw/master/figs/sneak2.png)
 
 # FAQ
 

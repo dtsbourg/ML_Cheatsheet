@@ -5,17 +5,18 @@
 \section{Regression}
 \subsection{Linear Regression}
 Simple
-$y_n \approx f(\mathbf{x_n}) := w_0 + w_1 \mathbf{x_{n1}}$\newline
+$y_n \approx f(\mathbf{x_n}) := w_0 + w_1 x_{n1}$\newline
 Multiple
 $y_n \approx f(\mathbf{x_n}) := w_0 + \sum_{j=1}^D w_j x_{nj} = \tilde{\mathbf{x}}_n^T \mathbf{w}$
 If $D > N$ the task is under-determined (more dimensions than data) $\rightarrow$ regularization.
 
 \section{Cost functions}
-MSE $= \frac{1}{N} \sum_{n=1}^N [y_n - f(x_n)]^2$ Not good with outliers.
-MAE $= \frac{1}{N} \sum_{n=1}^N |y_n - f(x_n)|$
+MSE $= \frac{1}{N} \sum_{n=1}^N [y_n - f(\mathbf{x_n})]^2$ Not good with outliers.
+MAE $= \frac{1}{N} \sum_{n=1}^N |y_n - f(\mathbf{x_n})|$
+Error $e_n = y_n - f(\mathbf{x_n})$
 \subsection{Convexity}
 A line joining two points never intersects with the function anywhere else.
-$f(\lambda u + (1-\lambda)v) \le \lambda f(u) + (1-\lambda) f(v)$ with $\lambda \in [0;1]$.
+$f(\lambda \mathbf{u} + (1-\lambda)\mathbf{v}) \le \lambda f(\mathbf{u}) + (1-\lambda) f(\mathbf{v})$ with $\lambda \in [0;1]$.
 A strictly convex function has a unique global minimum $w^*$. Sums of convex functions are convex.
 
 A function must always lie above its linearisation $\mathcal{L}(u) \ge \mathcal{L}(w) + \nabla \mathcal{L}(w)^T (u-w) \forall u,w$.
@@ -26,31 +27,32 @@ A set is convex iff the line segment between any two points of $\mathcal{C}$ lie
 % OPTIM
 %========================================================================================================
 \section{Optimisation}
-Gradient $\nabla \mathcal{L} := \begin{bmatrix} \frac{\partial \mathcal{L}(w)}{\partial w_1} & \dots & \frac{\partial \mathcal{L}(w)}{\partial w_D} \end{bmatrix}$
+Find $\mathbf{w^*} \in \mathcal{R}^D$ which $min \mathcal{L}(\mathbf{w})$.\
+Gradient $\nabla \mathcal{L} := \begin{bmatrix} \frac{\partial \mathcal{L}(\mathbf{w})}{\partial w_1} & \dots & \frac{\partial \mathcal{L}(\mathbf{w})}{\partial w_D} \end{bmatrix}$
 
 \subsection{Gradient descent}
 
-$w^{(t+1)} = w^{(t)} - \gamma \nabla \mathcal{L}(w^{(t)})$. Very sensitive to ill-conditioning.
+$\mathbf{w^{(t+1)}} = \mathbf{w^{(t)}} - \gamma \nabla \mathcal{L}(\mathbf{w^{(t)}})$. Very sensitive to ill-conditioning.
 
 GD - Linear Reg
 
-$\mathcal{L}(w) = \frac{1}{2N} (y - Xw)^T(y - Xw) \rightarrow$ \newline $ \nabla \mathcal{L}(w) = - \frac{1}{N} X^T(y - Xw)$.\newline Cost : $O_{error}(N*D) = 2N*D + N$ and $O_{weights} = 2N*D + D$.
+$\mathcal{L}(\mathbf{w}) = \frac{1}{2N} (\mathbf{y} - X\mathbf{w})^T(\mathbf{y} - X\mathbf{w}) \rightarrow$ \newline $ \nabla \mathcal{L}(\mathbf{w}) = - \frac{1}{N} X^T(\mathbf{y} - X\mathbf{w})$.\newline Cost : $O_{error}(N*D) = 2N*D + N$ and $O_{weights} = 2N*D + D$.
 
 \subsection{SGD} 
 
-$\mathcal{L} = \frac{1}{N} \sum{\mathcal{L}}_n(w)$ with update $w^{(t+1)} = w^{(t)} - \gamma \nabla \mathcal{L}_n(w^{(t)})$.
+$\mathcal{L} = \frac{1}{N} \sum{\mathcal{L}}_n(\mathbf{w})$ with update $\mathbf{w}^{(t+1)} = \mathbf{w}^{(t)} - \gamma \nabla \mathcal{L}_n(\mathbf{w}^{(t)})$.
 
 \subsection{Mini-batch SGD}
 
-$\mathbf{g} = \frac{1}{|B|} \sum_{n\in B}{\nabla \mathcal{L}}_n(w^{(t)})$ with update $w^{(t+1)} = w^{(t)} - \gamma \mathbf{g}$.
+$\mathbf{g} = \frac{1}{|B|} \sum_{n\in B}{\nabla \mathcal{L}}_n(\mathbf{w}^{(t)})$ with update $\mathbf{w}^{(t+1)} = \mathbf{w}^{(t)} - \gamma \mathbf{g}$.
 
 \subsection{Subgradient at $w$}
 
-$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. Example subgradient for MAE : $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \text{ otherwise }}$. We get the gradient : $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(f(x_n) -y) \nabla f(x_n)$.
+$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. Example subgradient for MAE : $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \text{ otherwise }}$. We get the gradient : $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(x_n) \nabla f(x_n)$.
 
 \subsection{Projected SGD}
 
-$w^{(t+1)} = \mathcal{P_C} [w^{(t)} - \gamma \nabla \mathcal{L}(w^{(t)})]$
+$\mathbf{w}^{(t+1)} = \mathcal{P_C} [\mathbf{w}^{(t)} - \gamma \nabla \mathcal{L}(\mathbf{w}^{(t)})]$
 
 \subsection{Newton's method}
 Second order (more expensive $O(ND^2 + D^3)$ but faster convergence).
@@ -59,8 +61,8 @@ $w^{(t+1)} = w^{(t)} - \gamma^{(t)} (H^{(t)})^{-1} \nabla \mathcal{L}(w^{(t)})$
 
 
 \subsection{Optimality conditions}
-Necessary : $\nabla \mathcal{L} (w^*) = 0$
-Sufficient : Hessian PSD $\mathbf{H}(w^*) := \frac{\partial^2 \mathcal{L}(w^*)}{\partial w \partial w^T}$
+Necessary : $\nabla \mathcal{L} (\mathbf{w}^*) = 0$
+Sufficient : Hessian PSD $\mathbf{H}(\mathbf{w}^*) := \frac{\partial^2 \mathcal{L}(\mathbf{w}^*)}{\partial w \partial w^T}$
 
 %========================================================================================================
 % LEAST SQUARES
@@ -68,12 +70,13 @@ Sufficient : Hessian PSD $\mathbf{H}(w^*) := \frac{\partial^2 \mathcal{L}(w^*)}{
 
 \section{Least Squares}
 \subsection{Normal Equation}
-$X^T (y - Xw)= 0 \Rightarrow w^* = (XX^T)^{-1}X^Ty \text{ and } \hat{y}_m = x_m^T w^*$
-Gram matrix invertible iff rank(X) = D (use SVD if this is the case to get pseudo-inverse).
+$X^T (\mathbf{y} - X\mathbf{w})= 0 \Rightarrow \mathbf{w^*} = (XX^T)^{-1}X^T\mathbf{y} \text{ and } \mathbf{\hat{y}_m} = \mathbf{x_m}^T \mathbf{w^*}$
+Gram matrix invertible iff rank(X) = D (use SVD $X = USV^T$ if this is not the case to get pseudo-inverse $\mathbf{w^*} = V\tilde{S}U^T$ with $\tilde{S}$ pseudo-inverse of $S$).
 
 \section{Likelihood}
+Probabilistic model $y_n = \mathbf{x_n}^T\mathbf{w} + \epsilon_n$.
 Probability of observing the data given a set of parameters and inputs :
-$p(y|X,w) = \prod p(y_n|x_n, w) = \prod \mathcal{N}(y_n | x_n^Tw, \sigma^2)$
+$p(\mathbf{y}|X, \mathbf{w}) = \prod p(y_n|\mathbf{x_n}, \mathbf{w})  = \prod \mathcal{N} (y_n | \mathbf{x_n}^T\mathbf{w}, \sigma^2)$
 
 Best model maximises log-likelihood $\mathcal{L}_{LL} = -\frac{1}{2\sigma^2} \sum(y_n-x_n^Tw)^2+cst$.
 
@@ -83,10 +86,10 @@ Best model maximises log-likelihood $\mathcal{L}_{LL} = -\frac{1}{2\sigma^2} \su
 %========================================================================================================
 \section{Regularization}
 \subsection{Ridge Regression}
-$\mathcal{L}(w) = \frac{1}{2} (y - Xw)^T(y - Xw) + \frac{\lambda}{2} ||w||^2_2 \rightarrow$
-$w^*_{ridge} = (XX^T + \lambda I_D)^{-1}X^Ty = X^T(XX^T + \lambda I_N)^{-1}y$
+$\mathcal{L}(\mathbf{w}) = \frac{1}{2} (\mathbf{y} - X\mathbf{w})^T(\mathbf{y} - X\mathbf{w}) + \frac{\lambda}{2} ||\mathbf{w}||^2_2 \rightarrow$
+$\mathbf{w^*_{ridge}} = (XX^T + \lambda I_D)^{-1}X^T\mathbf{y} = X^T(XX^T + \lambda I_N)^{-1}\mathbf{y}$
 
-Can be considered a MAP estimator : $w^*_{ridge} = arg min_w - log(p(w|X,y))$
+Can be considered a MAP estimator : $\mathbf{w^*_{ridge}} = arg min_w - log(p(w|X,y))$
 
 \subsection{Lasso}
 Sparse solution.
@@ -99,6 +102,7 @@ $\mathcal{L}(w) = \frac{1}{2N} (y - Xw)^T(y - Xw) + \lambda ||w||_1 $
 \subsection{Bias-Variance decomposition}
 Small dimensions : large bias, small variance.
 Large dimensions : small bias, large variance.
+Error for the val set compared to the emp distr of the data goes down like $\frac{1}{\sqrt{|\text{validation points}|}}$ and goes up like $\sqrt{ln(|\text{hyper parameters}|)}$
 
 
 %========================================================================================================
@@ -106,10 +110,10 @@ Large dimensions : small bias, large variance.
 %========================================================================================================
 \section{Classification}
 \subsection{Optimal}
-$\hat{y}(x) = argmax_{y\in \mathcal{Y}} p(y|x)$
+$\hat{y}(\mathbf{x}) = argmax_{y\in \mathcal{Y}} p(y|\mathbf{x})$
 
 \subsection{Logistic regression}
-$\sigma(z) = \frac{e^z}{1+e^z}$ to limit the predicted values $y\in [0;1]$ ($p(1|x) = \sigma(x^Tw)$ and $p(0|x) = 1-\sigma(x^Tw)$).
+$\sigma(z) = \frac{e^z}{1+e^z}$ to limit the predicted values $y\in [0;1]$ ($p(1|\mathbf{x}) = \sigma(\mathbf{x}^T\mathbf{w})$ and $p(0|\mathbf{x}) = 1-\sigma(\mathbf{x}^T\mathbf{w})$). We decide with respect to 0.5
 
 Likelihood
 
