@@ -46,7 +46,7 @@ $\mathbf{g} = \frac{1}{|B|} \sum_{n\in B}{\nabla \mathcal{L}}_n(w^{(t)})$ with u
 
 \subsection{Subgradient at $w$}
 
-$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. Example subgradient for MAE : $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \text{ otherwise }}$. We get the gradient : $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(x_n) \nabla f(x_n)$.
+$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. Example subgradient for MAE : $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \text{ otherwise }}$. We get the gradient : $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(f(x_n) -y) \nabla f(x_n)$.
 
 \subsection{Projected SGD}
 
