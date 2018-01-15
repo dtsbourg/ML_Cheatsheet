@@ -34,6 +34,10 @@ I am just transcribing this stuff.
 
 Thanks to Tim for the awesome LaTeX template ! [StackOverflow answer](https://stackoverflow.com/questions/1911516/how-to-make-cheat-sheets-in-latex)
 
+# Sneakpeek
+
+![](https://github.com/dtsbourg/ML_Cheatsheet/raw/master/sneak.png)
+
 # FAQ
 
 > Why "Quick maff" ?
