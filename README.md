@@ -30,7 +30,7 @@ If you're taking this class and feel like there is a mistake or would like to ad
 Please restrict this to personal usage only. Content is provided by the [MLO lab](https://mlo.epfl.ch/) in the form of the class,
 I am just transcribing this stuff. 
 
-# Acknowledgments
+# Acknowledgements
 
 Thanks to Tim for the awesome LaTeX template ! [StackOverflow answer](https://stackoverflow.com/questions/1911516/how-to-make-cheat-sheets-in-latex)
 
