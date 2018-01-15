@@ -17,7 +17,9 @@ Cheatsheet for CS-433 (Machine Learning).
 * [ ] SVD + PCA
 * [ ] Neural Nets
 
-It still needs quite a bit of clean-up, but that will be done once content is all there. Feel free to start ! **11pt [has been enforced](https://github.com/dtsbourg/ML_Cheatsheet/blob/master/master.tex#L1)**.
+It still needs quite a bit of clean-up, but that will be done once content is all there. Feel free to start ! 
+
+**11pt [has been enforced](https://github.com/dtsbourg/ML_Cheatsheet/blob/master/master.tex#L1)**.
 
 # Contributing
 
