@@ -19,7 +19,6 @@ Cheatsheet for CS-433 (Machine Learning).
 
 It still needs quite a bit of clean-up, but that will be done once content is all there. Feel free to start ! 
 
-**11pt [has been enforced](https://github.com/dtsbourg/ML_Cheatsheet/blob/master/master.tex#L1)**.
 
 # Contributing
 
@@ -42,6 +41,11 @@ Thanks to Tim for the awesome LaTeX template ! [StackOverflow answer](https://st
 ![](https://github.com/dtsbourg/ML_Cheatsheet/raw/master/figs/sneak2.png)
 
 # FAQ
+
+> Is it in ```11 pt``` ? 
+
+Yes, it has been [enforced](https://github.com/dtsbourg/ML_Cheatsheet/blob/master/master.tex#L1).
+
 
 > Why "Quick maff" ?
 
