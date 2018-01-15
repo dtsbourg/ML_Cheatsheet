@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.6)  14 JAN 2018 18:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.6)  15 JAN 2018 11:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2127,11 +2127,31 @@ Underfull \hbox (badness 5064) in paragraph at lines 13--15
 p/m/n/9 (+20) (\OML/jkp/m/it/9 x; y\OT1/jkp/m/n/9 (+20) ) =
  []
 
+) (./exams.tex
+Underfull \hbox (badness 10000) in paragraph at lines 10--12
+[]$[]\OMS/jkp/m/n/9 L\OT1/jkp/m/n/9 (+20) (\OML/jkp/m/it/9 w\OT1/jkp/m/n/9 (+20
+) ) = [][] [][] [](\OML/jkp/m/it/9 y[] \OMS/jkp/m/n/9 ^^@ \OML/jkp/m/it/9 x[]w[
+]\OT1/jkp/m/n/9 (+20) )[] +
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--12
+[][] [][] \OMS/jkp/m/n/9 N\OT1/jkp/m/n/9 (+20) (\OML/jkp/m/it/9 y[]\OMS/jkp/m/n
+/9 j\OML/jkp/m/it/9 w[]x[]; ^^[[]\OT1/jkp/m/n/9 (+20) )$[] \T1/jkp/m/n/9 (+20) 
+and pri-or
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+[]$[]\OML/jkp/m/it/9 max[]min[]f\OT1/jkp/m/n/9 (+20) (\OML/jkp/m/it/9 x; y\OT1/
+jkp/m/n/9 (+20) ) \OMS/jkp/m/n/9 ^^T
+ []
+
 )
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 184.
+(Font)              scaled to size 8.0pt on input line 185.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 184.
+ mdframed uses option nobreak mdframed on input line 185.
 
 Overfull \vbox (0.58315pt too high) has occurred while \output is active []
 
@@ -2141,13 +2161,13 @@ Overfull \vbox (0.58315pt too high) has occurred while \output is active []
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (./master.aux) ) 
 Here is how much of TeX's memory you used:
- 28695 strings out of 493014
- 577186 string characters out of 6133352
- 677696 words of memory out of 5000000
+ 28706 strings out of 493014
+ 577281 string characters out of 6133352
+ 686777 words of memory out of 5000000
  31623 multiletter control sequences out of 15000+600000
- 94116 words of font info for 144 fonts, out of 8000000 for 9000
+ 94902 words of font info for 150 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,13n,76p,10417b,998s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,13n,76p,10417b,996s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/kpfonts/kpf
 onts-expert.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc
 }{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/sourcesanspro/a_ggs4wk.enc
@@ -2162,7 +2182,7 @@ fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb></usr/lo
 cal/texlive/2016/texmf-dist/fonts/type1/public/kpfonts/jkpsyb.pfb></usr/local/t
 exlive/2016/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb>
-Output written on master.pdf (1 page, 185112 bytes).
+Output written on master.pdf (1 page, 187394 bytes).
 PDF statistics:
  58 PDF objects out of 1000 (max. 8388607)
  43 compressed objects within 1 object stream

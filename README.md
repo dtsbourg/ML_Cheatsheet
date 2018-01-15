@@ -33,3 +33,9 @@ I am just transcribing this stuff.
 # Acknowledgments
 
 Thanks to Tim for the awesome LaTeX template ! [StackOverflow answer](https://stackoverflow.com/questions/1911516/how-to-make-cheat-sheets-in-latex)
+
+# FAQ
+
+> Why "Quick maff" ?
+
+[Man's not hot](https://www.youtube.com/watch?v=k3jlviX88iw)

@@ -1,0 +1,42 @@
+%!TEX root=master.tex
+
+\section{Mock Exam Notes}
+\subsection{Normal equation}
+Unique if convex.\newline
+$\frac{1}{\sigma_k^2} X(X^Tw_k-y_k)+w_k = 0 \Leftrightarrow$ \newline
+$ w_k^* = (\frac{1}{\sigma_k^2} XX^T+I_D)^{-1} \frac{1}{\sigma_k^2}Xy_k$
+
+\subsection{MAP solution}
+$\mathcal{L}(w) = \sum_k \sum_n \frac{1}{2\sigma_k^2} (y_{nk} - x_n^T w_k)^2 + \frac{1}{2} \sum_k ||w_k||^2_2 \rightarrow$
+Likelihood $p(y|X,w) = \prod_n \prod_k \mathcal{N}(y_{nk}|w_k^Tx_n, \sigma_k^2)$ and prior $p(w) = \prod_k \mathcal{N}(w_k|0,I_D)$
+
+\subsection{Convexity}
+$ln[\sum_k^Ke^{t_k}]$ is convex. Linear sum of parameters is convex.
+
+\section{Multiple Choice Notes}
+\subsection{True statements}
+\begin{itemize}
+\item Regularization term sometimes renders the min. problem into a strictly concave/convex problem.
+\item k-NN can be applied even if the data cannot be linearly separated.
+\item $max{0, x} = max_{\alpha \in [0,1]} \alpha x$
+\item $min{0, x} = min_{\alpha \in [0,1]} \alpha x$
+\item $g(x) := min_y f(x,y) \Rightarrow g(x) \le f(x,y)$
+\item $max_x g(x) \le max_x f(x,y)$
+\item $max_x min_y f(x,y) \le min_y max_x f(x,y)$
+\end{itemize}
+
+\subsection{Convex functions}
+\begin{itemize}
+\item $f(x) = x^2, x \in \mathbb{R}$
+\item $f(x) = -x^3, x \in [-1,0]$
+\item $f(x) = e^{-x}, x \in \mathbb{R}$
+\item $f(x) = ln(1/x), x \in \mathbb{R^+}$
+\item $f(x) = g(h(x)), x \in \mathbb{R}, g,h$ convex and increasing over $\mathbb{R}$
+\end{itemize}
+
+\subsection{Non-convex functions}
+\begin{itemize}
+\item $f(x) = x^3, x \in [-1,1]$
+\item $f(x) = e^{-x^/2}, x \in \mathbb{R}$
+
+\end{itemize}
