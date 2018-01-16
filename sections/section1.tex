@@ -21,7 +21,7 @@ A strictly convex function has a unique global minimum $w^*$. Sums of convex fun
 
 A function must always lie above its linearisation: \newline $\mathcal{L}(u) \ge \mathcal{L}(w) + \nabla \mathcal{L}(w)^T (u-w) \forall u,w$.
 
-A set is convex iff line segment between any two points of $\mathcal{C}$ lies in $\mathcal{C}$ : $\theta u + (1 - \theta) v \in \mathcal{C}$ 
+A set is convex iff line segment between any two points of $\mathcal{C}$ lies in $\mathcal{C}$ : $\theta u + (1 - \theta) v \in \mathcal{C}$
 
 %========================================================================================================
 % OPTIM
@@ -38,7 +38,7 @@ GD - Linear Reg
 
 $\mathcal{L}(\mathbf{w}) = \frac{1}{2N} (\mathbf{y} - X\mathbf{w})^T(\mathbf{y} - X\mathbf{w}) \rightarrow$ \newline $ \nabla \mathcal{L}(\mathbf{w}) = - \frac{1}{N} X^T(\mathbf{y} - X\mathbf{w})$. Cost: \newline $O_{err} = 2ND + N$ and $O_{w} = 2ND + D$.
 
-\subsection{SGD} 
+\subsection{SGD}
 
 $\mathcal{L} = \frac{1}{N} \sum{\mathcal{L}}_n(\mathbf{w})$ with update $\mathbf{w}^{(t+1)} = \mathbf{w}^{(t)} - \gamma \nabla \mathcal{L}_n(\mathbf{w}^{(t)})$.
 
@@ -141,7 +141,7 @@ General form
 $p(y|\eta) = h(y) exp[\eta^T \psi(y) - A(\eta)]$ where
 
 Cumulant
- 
+
 $A(\eta) = ln[\int_y h(y) exp[\eta^T \psi(y)] dy]$
 \newline
 $\nabla A(\eta) = \mathbb{E}[\psi(y)]$
@@ -154,13 +154,13 @@ $\eta = g^{-1}(\mu) \Leftrightarrow \mu = g(\eta)$
 
 \begin{itemize}
 \item $\eta_{gaussian} = (\mu / \sigma^2, - 1 / 2 \sigma^2)$
-\item $\eta_{poisson} = ln(\mu)$	
+\item $\eta_{poisson} = ln(\mu)$
 \item $\eta_{bernoulli} = ln(\mu / 1 - \mu)$
 \item $\eta_{general} = g^{-1}(\frac{1}{N} \sum_{n=1}^N \psi(y_n))$
 \end{itemize}
 
 \subsection{Nearest Neighbor Models}
-Performs best in low dimensions. 
+Performs best in low dimensions.
 \subsubsection{k-NN}
 $f_{S^{t,k}}(x) = \frac{1}{k} \sum_{n:x_n\in ngbh_{S{t,k}(x)}} y_n$
 Pick odd $k$ so there is a clear winner.
@@ -196,7 +196,7 @@ $min \mathcal{L}(z,\mu) = \sum_n^N \sum_k^K z_{nk} ||x_n - \mu_k||^2_2$ with $z_
 
 Algorithm (Coordinate Descent)
 \begin{enumerate}
-\item $\forall n$ compute $z_n = \begin{cases} 
+\item $\forall n$ compute $z_n = \begin{cases}
 	1 \text{ if } k = argmin_j || x_n - \mu||^2 \\
 	0 \text{ otherwise }
    \end{cases}$
@@ -211,10 +211,10 @@ Issues
 \end{enumerate}
 
 Probabilistic model
-$p(X|\mu,z) = \prod_n^N \mathcal{N}(x_n|\mu_k,I) = \prod_n^N \prod_k^K \mathcal{N}(x_n|\mu_k,I)^{z_{nk}}$ 
+$p(X|\mu,z) = \prod_n^N \mathcal{N}(x_n|\mu_k,I) = \prod_n^N \prod_k^K \mathcal{N}(x_n|\mu_k,I)^{z_{nk}}$
 
 \subsection{Gaussian Mixture Models}
-$p(X|\mu,z) = \prod_n^N p(x_n|z_n,\mu_k,\Sigma_k)p(z_n|\pi) 
+$p(X|\mu,z) = \prod_n^N p(x_n|z_n,\mu_k,\Sigma_k)p(z_n|\pi)
 = \prod_n^N \prod_k^K [\mathcal{N}(x_n|\mu_k,\Sigma_k)]^{z_{nk}} \prod_k^K [\pi_k]^{z_{nk}}$ where $pi_k = p(z_n=k)$
 
 Marginal likelihood: $z_n$ are latent variables so they can be factored out from the likelihood $p(x_n|\theta) = \sum \pi_k \mathcal{N}(x_n|\mu_k, \Sigma_k)$. (number of parameters reduced from $O(N)$ to $O(D^2K)$.
@@ -225,7 +225,7 @@ Intialize $\mu^{(1)}, \Sigma^{(1)}, \pi^{(1)}$.
 \begin{enumerate}
 \item E-step: Compute the assignments. $q_{kn}^{(t)} := \frac{\pi_k^{(t)} \mathcal{N}(x_n|\mu_k^{(t)}, \Sigma_k^{(t)})}{ \sum_k^K \pi_k^{(t)} \mathcal{N}(x_n|\mu_k^{(t)}, \Sigma_k^{(t)}) }$
 \item Compute Marginal Likelihood
-\item M-step: Update 
+\item M-step: Update
 
 $\mu^{(t+1)} = \frac{\sum_n q_{kn}^{(t)} x_n}{\sum_n q_{kn}^{(t)}}$
 
@@ -293,7 +293,7 @@ Let $\mathcal{L}_n = (y_n - f^{(L+1)} \circ \dots \circ f^{(1)}(\mathbf{x}^{(0)}
 \textbf{Forward pass} \newline $\mathbf{x}^{(0)}=\mathbf{x}_n$. For $l=1,\dots,L+1$ \newline
 $\mathbf{z}^{(l)} = (\mathbf{W}^{(l)})^T\mathbf{x}^{(l-1)}+\mathbf{b}^{(l)}$, $\mathbf{x}^{(l)} = \phi(\mathbf{z}^{(l)})$\newline
 \textbf{Backward pass} \newline $\delta^{(L+1)} = -2(y_n-\mathbf{x}^{(L+1)})\phi^{'}(\mathbf{z}^{(L+1)})$ and $\forall l$ :
-$\delta^{(l)} = (\mathbf{W}^{(l+1)}\delta^{(l+1)}) \circ \phi^{'}(\mathbf{z}^{(l)})$ \newline
+$\delta^{(l)} = (\mathbf{W}^{(l+1)}\delta^{(l+1)}) \odot \phi^{'}(\mathbf{z}^{(l)})$ \newline
 
 \textbf{Final pass} \newline
 $\frac{\partial{L}_n}{\partial w_{i,j}^{(l)}} = \delta^{(l)}_j \mathbf{x}_i^{(l-1)}$, $\frac{\partial{L}_n}{\partial b_{j}^{(l)}} = \delta_j^{(l)}$
@@ -325,8 +325,8 @@ Conditional independence: $p(X,Y)=p(X)p(Y)$ or given $Z$ $p(X,Y|Z)=p(X|Z)p(Y|Z)$
 
 \begin{enumerate}
 \item $p(X_1, X_2, X_3) = p(X_3)p(X_1|X_3)p(X_2|X_3)$ : $X_1$ and $X_2$ are independent given $X_3$
-\item $p(X_1, X_2, X_3) = p(X_1)p(X_3|X_1)p(X_2|X_3)$ : $X_1$ and $X_2$ are independent given $X_3$	
-\item $p(X_1, X_2, X_3) = p(X_1)p(X_2)p(X_3|X_1, X_2)$ : $X_1$ and $X_2$ are \textbf{not} independent given $X_3$		
+\item $p(X_1, X_2, X_3) = p(X_1)p(X_3|X_1)p(X_2|X_3)$ : $X_1$ and $X_2$ are independent given $X_3$
+\item $p(X_1, X_2, X_3) = p(X_1)p(X_2)p(X_3|X_1, X_2)$ : $X_1$ and $X_2$ are \textbf{not} independent given $X_3$
 \end{enumerate}
 
 $X \rightarrow Y$ path blocked by $Z$ if it contains a variable such that either
