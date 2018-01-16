@@ -15,7 +15,7 @@ Cheatsheet for CS-433 (Machine Learning).
 * [x] Unsupervised Learning
 * [x] Matrix Factorisation
 * [x] SVD + PCA
-* [ ] Neural Nets
+* [x] Neural Nets
 * [ ] Graphical Models
 
 It still needs quite a bit of clean-up, but that will be done once content is all there. Feel free to start ! 

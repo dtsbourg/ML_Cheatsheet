@@ -279,3 +279,40 @@ Decorrelate the data. Empirical mean before: $N\mathbf{K} = \mathbf{X}\mathbf{X}
 After $\mathbf{\tilde{X}} = \mathbf{U}^T\mathbf{X}$: $N\mathbf{\tilde{K}} = \mathbf{\tilde{X}}\mathbf{\tilde{X}}^T = \mathbf{S}_D^2$ (the components are uncorrelated).
 
 Pitfalls: not invariant under scalings.
+
+%========================================================================================================
+% Neural nets
+%========================================================================================================
+\section{Neural Networks}
+The output at the node $j$ in layer $l$ is $x_j^{(l)} = \phi \big(\sum_i w_{i,j}^{(l)}x_i^{(l-1)} + b_j^{(l)} \big)$
+\subsection{Representation power}
+Error bound $\le \frac{(2Cr)^2}{n}$ where $C$ is the smoothness bound, $n$ the number of nodes. We can approximate any sufficiently smooth 2-dimensional function on a bounded domain ("on average" with $\sigma$ activation, "pointwise" with ReLU).
+\subsection{Learning}
+Problem is not convex but SGD is stable. Backpropagation:
+Let $\mathcal{L}_n = (y_n - f^{(L+1)} \circ \dots \circ f^{(1)}(\mathbf{x}^{(0)}_n))^2$.\newline
+\textbf{Forward pass} \newline $\mathbf{x}^{(0)}=\mathbf{x}_n$. For $l=1,\dots,L+1$ \newline
+$\mathbf{z}^{(l)} = (\mathbf{W}^{(l)})^T\mathbf{x}^{(l-1)}+\mathbf{b}^{(l)}$, $\mathbf{x}^{(l)} = \phi(\mathbf{z}^{(l)})$\newline
+\textbf{Backward pass} \newline $\delta^{(L+1)} = -2(y_n-\mathbf{x}^{(L+1)})\phi^{'}(\mathbf{z}^{(L+1)})$ and $\forall l$ :
+$\delta^{(l)} = (\mathbf{W}^{(l+1)}\delta^{(l+1)}) \circ \phi^{'}(\mathbf{z}^{(l)})$ \newline
+
+\textbf{Final pass} \newline
+$\frac{\partial{L}_n}{\partial w_{i,j}^{(l)}} = \delta^{(l)}_j \mathbf{x}_i^{(l-1)}$, $\frac{\partial{L}_n}{\partial b_{j}^{(l)}} = \delta_j^{(l)}$
+
+\subsection{Activations}
+\begin{itemize}
+\item sigmoid $\phi(x) = 1 -\sigma(x)$
+\item tanh $\frac{e^x+e^{-x}}{e^x+e^{-x}} = 2 \phi(2x)-1$
+\item ReLU, Leaky ReLU ($max\{\alpha x, x\}$)
+\end{itemize}
+
+\subsection{Convolutional Neural Nets}
+Convolution with filter $f$: $x^{(1)}[n,m] ) \sum_{k,l} f[k,l]x^{(0)}[n-k, m-l]$. Filter is local so no need for fully connected layers. We can use same filter at every position: \textit{weight sharing}. Learning: run backprop by computing different weights, then sum the gradients of shared weights.
+
+\subsection{Overfitting}
+Adding regularisation is equivalent to weight decay (by $(1-\eta\lambda)$). Can also use dataset augmentation, dropout.
+
+
+%========================================================================================================
+% Graphical models
+%========================================================================================================
+\section{Graphical Models}
