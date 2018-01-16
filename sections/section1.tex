@@ -117,7 +117,7 @@ $\sigma(z) = \frac{e^z}{1+e^z}$ to limit the predicted values $y\in [0;1]$ ($p(1
 
 Likelihood
 
-$p(y | X,w) = \prod p(y_n|x_n) = \prod_{n:y_n=0} p(y_n=0|x_n) ... \prod_{n:y_n=K} p(y_n=K|x_n) = \prod^K_k \prod^N_n [p(y_n = k | x_n,w)]^{\tilde{y}_{nk}}$ where ${tilde{y}_{nk}} = 1$ if $y_n=k$.
+$p(y | X,w) = \prod p(y_n|x_n) = \prod_{n:y_n=0} p(y_n=0|x_n) ... \prod_{n:y_n=K} p(y_n=K|x_n) = \prod^K_k \prod^N_n [p(y_n = k | x_n,w)]^{\tilde{y}_{nk}}$ where ${\tilde{y}_{nk}} = 1$ if $y_n=k$.
 
 For binary classification
 
@@ -215,7 +215,7 @@ $p(X|\mu,z) = \prod_n^N \mathcal{N}(x_n|\mu_k,I) = \prod_n^N \prod_k^K \mathcal{
 
 \subsection{Gaussian Mixture Models}
 $p(X|\mu,z) = \prod_n^N p(x_n|z_n,\mu_k,\Sigma_k)p(z_n|\pi)
-= \prod_n^N \prod_k^K [\mathcal{N}(x_n|\mu_k,\Sigma_k)]^{z_{nk}} \prod_k^K [\pi_k]^{z_{nk}}$ where $pi_k = p(z_n=k)$
+= \prod_n^N \prod_k^K [\mathcal{N}(x_n|\mu_k,\Sigma_k)]^{z_{nk}} \prod_k^K [\pi_k]^{z_{nk}}$ where $\pi_k = p(z_n=k)$
 
 Marginal likelihood: $z_n$ are latent variables so they can be factored out from the likelihood $p(x_n|\theta) = \sum \pi_k \mathcal{N}(x_n|\mu_k, \Sigma_k)$. (number of parameters reduced from $O(N)$ to $O(D^2K)$.
 
