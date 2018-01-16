@@ -306,7 +306,7 @@ $\frac{\partial{L}_n}{\partial w_{i,j}^{(l)}} = \delta^{(l)}_j \mathbf{x}_i^{(l-
 \end{itemize}
 
 \subsection{Convolutional Neural Nets}
-Convolution with filter $f$: $x^{(1)}[n,m] ) \sum_{k,l} f[k,l]x^{(0)}[n-k, m-l]$. Filter is local so no need for fully connected layers. We can use same filter at every position: \textit{weight sharing}. Learning: run backprop by computing different weights, then sum the gradients of shared weights.
+Convolution with filter $f$: $x^{(1)}[n,m] = \sum_{k,l} f[k,l]x^{(0)}[n-k, m-l]$. Filter is local so no need for fully connected layers. We can use same filter at every position: \textit{weight sharing}. Learning: run backprop by computing different weights, then sum the gradients of shared weights.
 
 \subsection{Overfitting}
 Adding regularisation is equivalent to weight decay (by $(1-\eta\lambda)$). Can also use dataset augmentation, dropout.
@@ -316,3 +316,27 @@ Adding regularisation is equivalent to weight decay (by $(1-\eta\lambda)$). Can 
 % Graphical models
 %========================================================================================================
 \section{Graphical Models}
+\subsection{Bayes Nets}
+$p(X_1,\dots,X_D) = p(X_1)p(X_2|X_1)\dots p(X_D|X_1,\dots,X_{D-1})$. One node is a random variable, directed edge from $X_j$ to $X_i$ if $X_j$ appears in the conditioning $p(X_i|\dots,X_j,\dots)$. The graph must be \textit{acyclic}.
+
+Conditional independence: $p(X,Y)=p(X)p(Y)$ or given $Z$ $p(X,Y|Z)=p(X|Z)p(Y|Z)$.
+
+\includegraphics[width=\linewidth]{figs/bayes.png}
+
+\begin{enumerate}
+\item $p(X_1, X_2, X_3) = p(X_3)p(X_1|X_3)p(X_2|X_3)$ : $X_1$ and $X_2$ are independent given $X_3$
+\item $p(X_1, X_2, X_3) = p(X_1)p(X_3|X_1)p(X_2|X_3)$ : $X_1$ and $X_2$ are independent given $X_3$	
+\item $p(X_1, X_2, X_3) = p(X_1)p(X_2)p(X_3|X_1, X_2)$ : $X_1$ and $X_2$ are \textbf{not} independent given $X_3$		
+\end{enumerate}
+
+$X \rightarrow Y$ path blocked by $Z$ if it contains a variable such that either
+\begin{enumerate}
+\item variable is in $Z$ and it is head-to-tail or tail-to-tail
+\item node is head-to-head and neither this node nor any of its descendants are in $Z$.
+\end{enumerate}
+
+$X$ and $Y$ are D-separated by $Z$ iff every path $X \rightarrow Y$ is blocked by $Z$.
+
+$X$ is conditionally independent of $Y$ conditioned on the $Z$ if $X$ and $Y$ are D-separated by $Z$. Independence is symmetric.
+
+The Markov blanket of a node $X_i$ is the set of parents, children, and co-parents of the node $X_i$ (other parents of its children).

@@ -43,23 +43,11 @@ Problem jointly convex? Compute $H(\hat{r}({v,w})) = \begin{bmatrix} 2w^2 & 4vw-
 \item $max_x min_y f(x,y) \le min_y max_x f(x,y)$
 \item $\nabla_{W} (\mathbf{x}^T\mathbf{W}\mathbf{x}) = \mathbf{x}\mathbf{x}^T$
 \item $\nabla_{x} (\mathbf{x}^T\mathbf{W}\mathbf{x}) = (\mathbf{W}+\mathbf{W}^T)\mathbf{x}$
-\item If we initialize the K-means algorithm with optimal clusters then it will find in one step optimal representation points.
-\item If we initialize the K-means algorithm with optimal representation points then it will find in one step optimal clusters.
+\item K-means: optimal cluster (resp. centers) init $\rightarrow$ one step optimal representation points (resp. clusters).
 \item Logistic loss is typically preferred over $L_2$ loss in classification tasks.
-\item For optimizing a matrix factorization of a $D\times N$ matrix, for large $D$, $N$ : \textit{per iteration, ALS has an increased computational cost over SGD} and \textit{per iteration, SGD cost is independent of D, N}.
-\item A neural net with one hidden layer and an arbitrary number of hidden nodes with sigmoid activation functions can approximate any “sufficiently smooth” function on a bounded domain.
-\item The complexity of the back-propagation algorithm for a neural net with $L$ layers and $K$ nodes per layer is $O(K^2L)$
-\item Consider a convolutional net where the data is laid out in a one-dimensional fashion and the filter/kernel has M non-zero terms. Ignoring the bias terms, there are $M$ parameters.
-\end{itemize}
-
-\subsection{Bayes nets}
-\includegraphics[width=0.5\linewidth]{figs/bayesnet.png}
-\begin{itemize}
-\item $X_1$ and $X_4$ are independent.
-\item $X_1$ and $X_4$ are \textbf{not} independent given $X_6$.
-\item $X_1$ and $X_4$ are independent given $X_2$.
-\item $X_1$ and $X_4$ are independent given $X_2$ and $X_3$.
-\item $X_1$ and $X_4$ are independent given $X_5$.
+\item For optimizing a MF of a $D\times N$ matrix, for large $D$, $N$ : \textit{per iteration, ALS has an increased computational cost over SGD} and \textit{per iteration, SGD cost is independent of D, N}.
+\item The complexity of backprop for a nn with $L$ layers and $K$ nodes/layer is $O(K^2L)$
+\item CNN where the data is laid out in a one-dimensional fashion and the filter/kernel has M non-zero terms. Ignoring the bias terms, there are $M$ parameters.
 \end{itemize}
 
 \subsection{Convex functions}
