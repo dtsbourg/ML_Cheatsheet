@@ -197,7 +197,7 @@ $min \mathcal{L}(z,\mu) = \sum_n^N \sum_k^K z_{nk} ||x_n - \mu_k||^2_2$ with $z_
 Algorithm (Coordinate Descent)
 \begin{enumerate}
 \item $\forall n$ compute $z_n = \begin{cases}
-	1 \text{ if } k = argmin_j || x_n - \mu||^2 \\
+	1 \text{ if } k = argmin_j || x_n - \mu_k||^2 \\
 	0 \text{ otherwise }
    \end{cases}$
 \item $\forall k$ compute $\mu_k = \frac{\sum_n z_{nk} x_n}{\sum_n z_{nk}}$
