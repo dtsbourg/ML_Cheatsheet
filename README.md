@@ -16,10 +16,11 @@ Cheatsheet for CS-433 (Machine Learning).
 * [x] Matrix Factorisation
 * [x] SVD + PCA
 * [x] Neural Nets
-* [ ] Graphical Models
+* [x] Graphical Models\*
 
-It still needs quite a bit of clean-up, but that will be done once content is all there. Feel free to start ! 
+It still needs quite a bit of clean-up. 
 
+\* Except for Factor Graphs. Feel free to add it but I'm skipping ...
 
 # Contributing
 
