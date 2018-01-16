@@ -70,8 +70,8 @@ Sufficient : Hessian PSD $\mathbf{H}(\mathbf{w}^*) := \frac{\partial^2 \mathcal{
 
 \section{Least Squares}
 \subsection{Normal Equation}
-$X^T (\mathbf{y} - X\mathbf{w})= 0 \Rightarrow$\newline$\mathbf{w^*} = (XX^T)^{-1}X^T\mathbf{y} \text{ and } \mathbf{\hat{y}_m} = \mathbf{x_m}^T \mathbf{w^*}$
-Graham matrix invertible iff $rank(X) = D$ (use SVD $X = USV^T$ if this is not the case to get pseudo-inverse $\mathbf{w^*} = V\tilde{S}U^T$ with $\tilde{S}$ pseudo-inverse of $S$).
+$X^T (\mathbf{y} - X\mathbf{w})= 0 \Rightarrow$\newline$\mathbf{w^*} = (X^TX)^{-1}X^T\mathbf{y} \text{ and } \mathbf{\hat{y}_m} = \mathbf{x_m}^T \mathbf{w^*}$
+Graham matrix invertible iff $rank(X) = D$ (use SVD $X = USV^T \in \mathbb{R}^{N\times D}$ if this is not the case to get pseudo-inverse $\mathbf{w^*} = V\tilde{S}U^T$ with $\tilde{S}$ pseudo-inverse of $S$).
 
 \section{Likelihood}
 Probabilistic model $y_n = \mathbf{x_n}^T\mathbf{w} + \epsilon_n$.
