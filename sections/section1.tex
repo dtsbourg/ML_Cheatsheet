@@ -48,7 +48,9 @@ $\mathbf{g} = \frac{1}{|B|} \sum_{n\in B}{\nabla \mathcal{L}}_n(\mathbf{w}^{(t)}
 
 \subsection{Subgradient at $w$}
 
-$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. Example subgradient for MAE: $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \in [-1;1] \text{ otherwise }}$. We get the gradient:\newline $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(y-f(x_n)) \nabla f(x_n)$.
+$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. 
+
+% Example subgradient for MAE: $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \in [-1;1] \text{ otherwise }}$. We get the gradient:\newline $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(y-f(x_n)) \nabla f(x_n)$.
 
 \subsection{Projected SGD}
 
@@ -172,11 +174,10 @@ Logistic regression with hinge loss :
 $min_w \sum_{n=1}^N [1-y_n x_n^T w]_+ + \frac{\lambda}{2} ||w||^2$ where $y \in [-1;1]$ the label and $hinge(x)= max\{0,x\}$. Convex but not differentiable so need subgradient.
 
 Duality : $\mathcal{L}(w) = max_{\alpha} G(w, \alpha)$. For SVM
-$min_{w} max_{\alpha \in [0,1]^N} \sum \alpha_n (1 - y_nx_n^Tw) + \frac{\lambda}{2} ||w||^2$ differentiable and convex.
-
-Can switch $max$ and $min$ when convex in $w$ and concave in $\alpha$. Simpler form:\newline
+$min_{w} max_{\alpha \in [0,1]^N} \sum \alpha_n (1 - y_nx_n^Tw) + \sfrac{\lambda}{2} ||w||^2$ differentiable and convex. Can switch $max$ and $min$ when convex in $w$ and concave in $\alpha$. Simpler form:\newline
 $w(\alpha) = \frac{1}{\lambda} \sum \alpha_n y_n x_n = \frac{1}{\lambda} X^T diag(y) \alpha$ which yields the optimisation problem:\newline
-$max_{\alpha \in [0,1]^N} \alpha^T\mathbf{1} - \frac{1}{2\lambda} \alpha^T Y X X^T Y \alpha$
+$max_{\alpha \in [0,1]^N} \alpha^T\mathbf{1} - \sfrac{1}{2\lambda} \alpha^T Y X X^T Y \alpha$\newline
+
 
 The solution is sparse ($\alpha_n$ is the slope of the lines that are lower bounds to the hinge loss).
 

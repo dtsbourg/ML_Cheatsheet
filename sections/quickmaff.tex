@@ -2,31 +2,36 @@
 \section{Quick maff}
 Chain rule $h = f(g(w)) \rightarrow \partial h(w) = \partial f(g(w)) \nabla g(w)$
 
-Gaussian $\mathcal{N}(y|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} exp(-\frac{(y-\mu)^2}{2\sigma^2})$
+Gaussian\newline $\mathcal{N}(y|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} exp(-\frac{(y-\mu)^2}{2\sigma^2})$
 
 Multivariate Gaussian $\mathcal{N}(y|\mu, \sigma^2) = \frac{1}{\sqrt{(2\pi)^D det(\Sigma)}} exp(-\frac{1}{2} (y-\mu)^T \Sigma^{-1} (y-\mu))$
 
-Bayes rule $p(x|y) = \frac{p(y|x) p(x)}{p(y)}$
+Bayes rule $p(x|y) = \sfrac{p(y|x) p(x)}{p(y)}$
 
-Logit $\sigma(x) = \frac{\partial ln[1+e^x]}{\partial x}$
+Logit $\sigma(x) = \sfrac{\partial ln[1+e^x]}{\partial x}$
 
 Naming
 Joint distribution $p(x,y) = p(x|y)p(y) = p(y|x)p(x)$ where
-\begin{itemize}
-\item $p(x|y) \text{ or } p(y|X,w) \rightarrow$ likelihood 
-\item $p(y)  \text{ or } p(w) \rightarrow$ prior
-\item $p(y|x) \rightarrow$ posterior
-\item $p(x) \rightarrow$ marginal likelihood
-\item $p(w|y,X) \rightarrow$ MAP estimator 
-\end{itemize}
+% \begin{itemize}
+% \item $p(x|y) \text{ or } p(y|X,w) \rightarrow$ likelihood
+% \item $p(y)  \text{ or } p(w) \rightarrow$ prior
+% \item $p(y|x) \rightarrow$ posterior
+% \item $p(x) \rightarrow$ marginal likelihood
+% \item $p(w|y,X) \rightarrow$ MAP estimator
+% \end{itemize}
+$p(x|y) \text{ or } p(y|X,w) \rightarrow$ likelihood 
+// $p(y)  \text{ or } p(w) \rightarrow$ prior
+// $p(y|x) \rightarrow$ posterior
+// $p(x) \rightarrow$ marginal likelihood
+// $p(w|y,X) \rightarrow$ MAP estimator 
 
 Marginal Likelihood \newline $p({\mathbb  {X}}|\alpha )=\int _{\theta }p({\mathbb  {X}}|\theta )\,p(\theta |\alpha )\ \operatorname {d}\!\theta $
 
 $p(X=x)=\sum_{y} p(X=x,Y=y) = \sum_{y} p(X=x \mid Y=y) p(Y=y)$
 
-Posterior probability $\propto$ Likelihood $\times$ Prior
+Posterior probability $\propto$ Likelihood $\times$ Prior. Max over $\mathcal{N}$ is equiv. to min. MSE: 
 
-Maximising over a Gaussian is equivalent to minimising MSE: $\beta_{MAP}^* = arg max_{\beta} p(y|X,\beta)p(\beta) \Leftrightarrow \beta^* = arg min_{\beta} \mathcal{L}(\beta)$
+$\beta_{MAP}^* = arg max_{\beta} p(y|X,\beta)p(\beta) \Leftrightarrow \beta^* = arg min_{\beta} \mathcal{L}(\beta)$
 
 Identifiable model \newline
 $\theta_1 = \theta_2 \rightarrow P_{\theta_1} = P_{\theta_2}$
@@ -35,9 +40,8 @@ $\theta_1 = \theta_2 \rightarrow P_{\theta_1} = P_{\theta_2}$
 $(PQ + I_N)^{-1} P = P (QP + I_M)^{-1}$
 
 $\sum_n (y_{n} -\mathbf{\beta}^T\mathbf{x_n})^2 = (\mathbf{y} - \mathbf{X}\mathbf{\beta})^T(\mathbf{y} - \mathbf{X}\mathbf{\beta})$
-
+\newline
 $\sum_j \beta^2 = \mathbf{\beta}^T \mathbf{\beta}$
 
-Unitary / orthogonal: $\mathbf{U}\mathbf{U}^T=\mathbf{U}^T\mathbf{U} = \mathbf{I}$ and $\mathbf{U}^T = \mathbf{U}^{-1}$. Rotation matrix (preserves length of vector).
-
-Jensen's inequality: \newline $log(\sum a) \ge \sum q log(\frac{a}{q})$
+Unit/ortho: $\mathbf{U}\mathbf{U}^T=\mathbf{U}^T\mathbf{U} = \mathbf{I}$, \newline $\mathbf{U}^T = \mathbf{U}^{-1}$ Rotation matrix (preserves length of vector).
+Jensen's inequality: \newline $log(\sum a) \ge \sum q log(\sfrac{a}{q})$

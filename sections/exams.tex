@@ -2,6 +2,8 @@
 %========================================================================================================
 % MOCK
 %========================================================================================================
+\newline
+\newline
 \section{Mock Exam Notes}
 \subsection{Normal equation}
 Unique if convex.\newline
@@ -13,7 +15,7 @@ $\mathcal{L}(w) = \sum_k \sum_n \frac{1}{2\sigma_k^2} (y_{nk} - x_n^T w_k)^2 + \
 Likelihood $p(y|X,w) = \prod_n \prod_k \mathcal{N}(y_{nk}|w_k^Tx_n, \sigma_k^2)$ and prior $p(w) = \prod_k \mathcal{N}(w_k|0,I_D)$
 
 \subsection{Convexity}
-$ln[\sum_k^Ke^{t_k}]$ is convex. Linear sum of parameters is convex.
+$ln[\sum_k^Ke^{t_k}]$ is convex
 
 \subsection{Deriving marginal distribution}
 $p(y_n|x_n,r_n=k,\beta) = \mathcal{N} (y_n|\beta_k^T\tilde{x}_n,1)$
@@ -36,11 +38,10 @@ Problem jointly convex? Compute $H(\hat{r}({v,w})) = \begin{bmatrix} 2w^2 & 4vw-
 \begin{itemize}
 \item Regularisation term sometimes renders the min. problem into a strictly concave/convex problem.
 \item k-NN can be applied even if the data cannot be linearly separated.
-\item $max\{ 0, x\} = max_{\alpha \in [0,1]} \alpha x$
-\item $min\{ 0, x\} = min_{\alpha \in [0,1]} \alpha x$
-\item $g(x) = min_y f(x,y) \Rightarrow g(x) \le f(x,y)$
-\item $max_x g(x) \le max_x f(x,y)$
-\item $max_x min_y f(x,y) \le min_y max_x f(x,y)$
+\item $max\{ 0, x\} = \underset{{\alpha \in [0,1]}}{max} \,\, \alpha x$ \newline $min\{ 0, x\} = \underset{{\alpha \in [0,1]}}{min}\,\,  \alpha x$
+\item $g(x) = \underset{y}{min}\,\, f(x,y) \Rightarrow g(x) \le f(x,y)$
+\item $\underset{x}{max}\,\, g(x) \le \underset{x}{max} \,\,f(x,y)$ \newline
+\item $\underset{x}{max} \,\, \underset{y}{min}  f(x,y) \le \underset{y}{min} \,\, \underset{x}{max} f(x,y)$
 \item $\nabla_{W} (\mathbf{x}^T\mathbf{W}\mathbf{x}) = \mathbf{x}\mathbf{x}^T$
 \item $\nabla_{x} (\mathbf{x}^T\mathbf{W}\mathbf{x}) = (\mathbf{W}+\mathbf{W}^T)\mathbf{x}$
 \item K-means: optimal cluster (resp. centers) init $\rightarrow$ one step optimal representation points (resp. clusters).
@@ -65,7 +66,6 @@ Problem jointly convex? Compute $H(\hat{r}({v,w})) = \begin{bmatrix} 2w^2 & 4vw-
 \subsection{Non-convex functions}
 \begin{itemize}
 \item $f(x) = x^3, x \in [-1,1]$
-\item $f(x) = e^{-x^/2}, x \in \mathbb{R}$
-\item $\sum \mathcal{N}$
-\item $sin(x) \forall x \in \mathbb{R}$
+\item $f(x) = e^{-x^2}, x \in \mathbb{R}$
+\item $\sum \mathcal{N}$, $sin(x)\,\, , \forall x \in \mathbb{R}$ \newline
 \end{itemize}

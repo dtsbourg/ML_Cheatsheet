@@ -1,38 +1,36 @@
 %!TEX root=../master.tex
 \section{Mock2014}
 \subsection{Weighted LS}
-$\mathcal{L}(\mathbf{\beta}) = \sfrac{1}{2} \sum_{n}w_n (y_n - \mathbf{\beta}^T\tilde{\mathbf{x}}_n)^2$.\\
-$\partial \mathcal{L}(\mathbf{\beta}) = \sum_n w_n(y_n - \mathbf{\beta}^T\tilde{\mathbf{x}}_n)\tilde{\mathbf{x}}_n = -\tilde{X}^T W \mathbf{y} + \tilde{X}^T W \tilde{X} \mathbf{B} = 0$.\\
-$w_n > 0 \rightarrow$ W pos def $\rightarrow \tilde{X}^T W \tilde{X}$ invertible $\rightarrow$ unique sol $\mathbf{\beta}^* = (\rightarrow \tilde{X}^T W \tilde{X})^{-1}\tilde{X}^T W \mathbf{y}$.\\
-prob model : $p(\mathbf{y} | X, \mathbf{\beta}) = \prod_n \mathcal{N}(y_n | \mathbf{\beta}^T \mathbf{\tilde{x}}_n, \sfrac{1}{w_n})$. 
+$\mathcal{L}(\mathbf{\beta}) = \sfrac{1}{2} \sum_{n}w_n (y_n - \mathbf{\beta}^T \tilde{\mathbf{x}}_n)^2$ \\
 
-\subsection{Multiclass class}
-$\eta_{nk} = \mathbf{\tilde{x}}_n^T \mathbf{\beta}_k$.
-$p(y_n = k | \mathbf{x}_n, \mathbf{\beta}) = \frac{e^{\eta_{nk}}}{\sum_{j} x^{\eta_{nj}}}$.
-$p(\mathbf{y} | X, \mathbf{\beta}) = \prod p(y_n = k | \mathbf{x}_n, \mathbf{\beta})$.
-$\tilde{\mathbf{y}}_{nk} = 1$ if $y_n = k$ and 0 else.
-log-lik : $\text{log} p(\mathbf{y} | X, \mathbf{\beta}) = \text{log} \prod_k \prod_n [p(y_n = k | \mathbf{x}_n, \mathbf{\beta})]^{\tilde{\mathbf{y}}_{nk}} = $
+$\partial \mathcal{L}(\mathbf{\beta}) = \sum_n w_n(y_n - \mathbf{\beta}^T\tilde{\mathbf{x}}_n) \tilde{\mathbf{x}}_n \newline = -\tilde{X}^T W \mathbf{y} + \tilde{X}^T W \tilde{X} \mathbf{B} = 0$.\\
+
+$w_n > 0 \rightarrow$ W pos def $\rightarrow \tilde{X}^T W \tilde{X}$ invertible $\rightarrow$ unique sol $\mathbf{\beta}^* = (\rightarrow \tilde{X}^T W \tilde{X})^{-1}\tilde{X}^T W \mathbf{y}$.\\
+prob model : \newline $p(\mathbf{y} | X, \mathbf{\beta}) = \prod_n \mathcal{N}(y_n | \mathbf{\beta}^T \mathbf{\tilde{x}}_n, \sfrac{1}{w_n})$. 
 
 \subsection{Subgradients}
-$\mathcal{L}(\mathbf{w}) = MAE(\mathbf{w}) = \sfrac{1}{N} \sum_n |y_n - f(\mathbf{w}, \mathbf{w_n})|$. Use chain rule with subgradient $h(x) = sgn(x)$. $\nabla \mathcal{L}(\mathbf{w}) = - \sfrac{1}{N} \sum_n h(y_n - f(\mathbf{w})) * \nabla f(\mathbf{w}, \mathbf{x_n})$. Then update weights.
-
-\subsection{K-means clustering + reg}
-Change rule for $z_{nk}$ with "...+ $||\mathbf{u_k}||$". Derive cost function w.r. to $\mathbf{u_k}$ and =0 to find optimal centers
+$MAE(\mathbf{w}) = \sfrac{1}{N} \sum_n |y_n - f(\mathbf{w}, \mathbf{w_n})|$. Use chain rule with subgradient $h(x) = sgn(x)$. \newline $\nabla \mathcal{L}(\mathbf{w}) = - \sfrac{1}{N} \sum_n h(y_n - f(\mathbf{w})) \cdot \nabla f(\mathbf{w}, \mathbf{x_n})$. Then update weights.
 
 \subsection{Multiple output reg}
 $x_n$ has dim D but now $y_n$ has dim K. 
-$\mathcal{L}(\mathbf{W}) = \sum_k \sum_n \sfrac{1}{2 \sigma^2_k}(y_{nk} -\mathbf{x}^T_n \mathbf{w})^2 + \sfrac{1}{2 \sigma_0^2}\sum_k ||\mathbf{w}_k||^2$. Derive w.r. to a $\mathbf{w}_k$ to get optimal weights : $\sfrac{1}{ \sigma^2_k} X^T(X \mathbf{w}_k - \mathbf{y}_k) + \sfrac{1}{\sigma_0^2} \mathbf{w}_k = 0$. Pb is convex in W. $\mathbf{w}^*_k = (\sfrac{1}{ \sigma^2_k} X^T X + \sfrac{1}{\sigma_0^2} I_D)^{-1} \sfrac{1}{\sigma^2_k} X^T \mathbf{y}_k$. 
+$\mathcal{L}(\mathbf{W}) = \sum_k \sum_n \sfrac{1}{2 \sigma^2_k}(y_{nk} -\mathbf{x}^T_n \mathbf{w})^2 + \sfrac{1}{2 \sigma_0^2}\sum_k ||\mathbf{w}_k||^2$. Derive w.r.t. a $\mathbf{w}_k$ to get optimal weights : $\sfrac{1}{ \sigma^2_k} X^T(X \mathbf{w}_k - \mathbf{y}_k) + \sfrac{1}{\sigma_0^2} \mathbf{w}_k = 0$. Pb is convex in W. $\mathbf{w}^*_k = (\sfrac{1}{ \sigma^2_k} X^T X + \sfrac{1}{\sigma_0^2} I_D)^{-1} \sfrac{1}{\sigma^2_k} X^T \mathbf{y}_k$. 
 Prob model (posterior) same answer as \textbf{15.2} but with $\sfrac{1}{2 \sigma_0^2} I_D$ for the prior
 
 \subsection{Kernels}
-Prove that sym $\mathcal{K}(\mathbf{x}_i, \mathbf{x}_j$ and that pos sym def $t^T K t = \sum_i \sum_j K_{ij} t_i t_j \geq 0 \forall t$
+Prove symmetry $\mathcal{K}(\mathbf{x}_i, \mathbf{x}_j)$ and PSD $t^T K t = \sum_i \sum_j K_{ij} t_i t_j \geq 0 \forall t$
 
 \subsection{Mixture of lin reg}
 $p(y_n|\mathbf{x}_n, r_n = k, \mathbf{\beta}) = \mathcal{N}(y_n|\mathbf{\beta}_k^T \mathbf{\tilde{x}}_n, 1)$. We define $\mathbf{r}_{nk}$ like $\mathbf{y}_{nk}$ in \textbf{17.2}
-Likelihood : $p(y_n|\mathbf{x}_n, \mathbf{\beta}, \mathbf{r}_n) = \prod_k [\mathcal{N}(y_n|\mathbf{\beta}_k^T \mathbf{\tilde{x}}_n , \sigma^2]^{r_{nk}}$. LL : $p(\mathbf{y}|X, \mathbf{\beta}, \mathbf{r}) = \prod_n \prod_k [\mathcal{N}(y_n|\mathbf{\beta}_k^T \mathbf{\tilde{x}}_n , \sigma^2]^{r_{nk}}$. 
-For $p(r_n = k | \mathbf{\pi}) = \pi_k$ : $p(y_n|\mathbf{x}_n, \mathbf{\beta}, \mathbf{\pi}) = \sum_k p(y_n, r_n = k| \mathbf{x}_n, \beta, \mathbf{\pi}) = \sum_k p(y_n | r_n = k, \mathbf{x}_n, \beta, \pi)\pi_k = \sum_k \mathcal{N}(y_n|\beta^T_k \mathbf{\tilde{x}}_n, \sigma^2) \pi_k$.\\
-$- log p(\mathbf{y} | X, \beta, \mathbf{\pi}) = -\sum_n log \sum_k \mathcal{N}(y_n|\beta^T_k \mathbf{\tilde{x}}_n, \sigma^2) \pi_k$.
-Model is not convex as a sum of gaussian. Not identifiable by permutation of labels.
+
+Likelihood: \newline $p(y_n|\mathbf{x}_n, \mathbf{\beta}, \mathbf{r}_n) = \underset{k}{\prod} [\mathcal{N}(y_n|\mathbf{\beta}_k^T \mathbf{\tilde{x}}_n , \sigma^2]^{r_{nk}}$. 
+
+LL:\newline $p(\mathbf{y}|X, \mathbf{\beta}, \mathbf{r}) = \underset{n}{\prod} \underset{k}{\prod} [\mathcal{N}(y_n|\mathbf{\beta}_k^T \mathbf{\tilde{x}}_n , \sigma^2]^{r_{nk}}$. 
+
+For $p(r_n = k | \mathbf{\pi}) = \pi_k$: \newline
+$p(y_n|\mathbf{x}_n, \mathbf{\beta}, \mathbf{\pi}) = \underset{k}{\sum} p(y_n, r_n = k| \mathbf{x}_n, \beta, \mathbf{\pi}) \newline = \underset{k}{\sum} p(y_n | r_n = k, \mathbf{x}_n, \beta, \pi) \cdot \pi_k \newline = \underset{k}{\sum} \mathcal{N}(y_n|\beta^T_k \mathbf{\tilde{x}}_n, \sigma^2) \pi_k$.\\
+
+$- log p(\mathbf{y} | X, \beta, \mathbf{\pi}) = -\underset{n}{\sum} log \underset{k}{\sum} \mathcal{N}(y_n|\beta^T_k \mathbf{\tilde{x}}_n, \sigma^2) \cdot \pi_k$.
+Model is not convex as a sum of gaussians. Not identifiable by permutation of labels.
 
 
 
