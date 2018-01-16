@@ -6,28 +6,28 @@
 \subsection{Linear Regression}
 Simple
 $y_n \approx f(\mathbf{x_n}) := w_0 + w_1 x_{n1}$\newline
-Multiple
-$y_n \approx f(\mathbf{x_n}) := w_0 + \sum_{j=1}^D w_j x_{nj} = \tilde{\mathbf{x}}_n^T \mathbf{w}$
+Multiple\newline
+$f(\mathbf{x_n}) := w_0 + \sum_{j=1}^D w_j x_{nj} = \tilde{\mathbf{x}}_n^T \mathbf{w}$\newline
 If $D > N$ the task is under-determined (more dimensions than data) $\rightarrow$ regularization.
 
 \section{Cost functions}
-MSE $= \frac{1}{N} \sum_{n=1}^N [y_n - f(\mathbf{x_n})]^2$ Not good with outliers.
-MAE $= \frac{1}{N} \sum_{n=1}^N |y_n - f(\mathbf{x_n})|$
+MSE $= \frac{1}{N} \sum_{n=1}^N [y_n - f(\mathbf{x_n})]^2$ Not good with outliers.\newline
+MAE $= \frac{1}{N} \sum_{n=1}^N |y_n - f(\mathbf{x_n})|$\newline
 Error $e_n = y_n - f(\mathbf{x_n})$
 \subsection{Convexity}
 A line joining two points never intersects with the function anywhere else.
 $f(\lambda \mathbf{u} + (1-\lambda)\mathbf{v}) \le \lambda f(\mathbf{u}) + (1-\lambda) f(\mathbf{v})$ with $\lambda \in [0;1]$.
 A strictly convex function has a unique global minimum $w^*$. Sums of convex functions are convex.
 
-A function must always lie above its linearisation $\mathcal{L}(u) \ge \mathcal{L}(w) + \nabla \mathcal{L}(w)^T (u-w) \forall u,w$.
+A function must always lie above its linearisation: \newline $\mathcal{L}(u) \ge \mathcal{L}(w) + \nabla \mathcal{L}(w)^T (u-w) \forall u,w$.
 
-A set is convex iff the line segment between any two points of $\mathcal{C}$ lies in $\mathcal{C}$ : $\theta u + (1 - \theta) v \in \mathcal{C}$ 
+A set is convex iff line segment between any two points of $\mathcal{C}$ lies in $\mathcal{C}$ : $\theta u + (1 - \theta) v \in \mathcal{C}$ 
 
 %========================================================================================================
 % OPTIM
 %========================================================================================================
 \section{Optimisation}
-Find $\mathbf{w^*} \in \mathcal{R}^D$ which $min \mathcal{L}(\mathbf{w})$.\
+Find $\mathbf{w^*} \in \mathcal{R}^D$ which $min\,\,\mathcal{L}(\mathbf{w})$.\newline
 Gradient $\nabla \mathcal{L} := \begin{bmatrix} \frac{\partial \mathcal{L}(\mathbf{w})}{\partial w_1} & \dots & \frac{\partial \mathcal{L}(\mathbf{w})}{\partial w_D} \end{bmatrix}$
 
 \subsection{Gradient descent}
@@ -36,7 +36,7 @@ $\mathbf{w^{(t+1)}} = \mathbf{w^{(t)}} - \gamma \nabla \mathcal{L}(\mathbf{w^{(t
 
 GD - Linear Reg
 
-$\mathcal{L}(\mathbf{w}) = \frac{1}{2N} (\mathbf{y} - X\mathbf{w})^T(\mathbf{y} - X\mathbf{w}) \rightarrow$ \newline $ \nabla \mathcal{L}(\mathbf{w}) = - \frac{1}{N} X^T(\mathbf{y} - X\mathbf{w})$.\newline Cost : $O_{error}(N*D) = 2N*D + N$ and $O_{weights} = 2N*D + D$.
+$\mathcal{L}(\mathbf{w}) = \frac{1}{2N} (\mathbf{y} - X\mathbf{w})^T(\mathbf{y} - X\mathbf{w}) \rightarrow$ \newline $ \nabla \mathcal{L}(\mathbf{w}) = - \frac{1}{N} X^T(\mathbf{y} - X\mathbf{w})$. Cost: \newline $O_{err} = 2ND + N$ and $O_{w} = 2ND + D$.
 
 \subsection{SGD} 
 
@@ -48,7 +48,7 @@ $\mathbf{g} = \frac{1}{|B|} \sum_{n\in B}{\nabla \mathcal{L}}_n(\mathbf{w}^{(t)}
 
 \subsection{Subgradient at $w$}
 
-$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. Example subgradient for MAE : $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \text{ otherwise }}$. We get the gradient : $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(x_n) \nabla f(x_n)$.
+$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. Example subgradient for MAE: $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \text{ otherwise }}$. We get the gradient:\newline $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(x_n) \nabla f(x_n)$.
 
 \subsection{Projected SGD}
 
@@ -70,8 +70,8 @@ Sufficient : Hessian PSD $\mathbf{H}(\mathbf{w}^*) := \frac{\partial^2 \mathcal{
 
 \section{Least Squares}
 \subsection{Normal Equation}
-$X^T (\mathbf{y} - X\mathbf{w})= 0 \Rightarrow \mathbf{w^*} = (XX^T)^{-1}X^T\mathbf{y} \text{ and } \mathbf{\hat{y}_m} = \mathbf{x_m}^T \mathbf{w^*}$
-Gram matrix invertible iff rank(X) = D (use SVD $X = USV^T$ if this is not the case to get pseudo-inverse $\mathbf{w^*} = V\tilde{S}U^T$ with $\tilde{S}$ pseudo-inverse of $S$).
+$X^T (\mathbf{y} - X\mathbf{w})= 0 \Rightarrow$\newline$\mathbf{w^*} = (XX^T)^{-1}X^T\mathbf{y} \text{ and } \mathbf{\hat{y}_m} = \mathbf{x_m}^T \mathbf{w^*}$
+Graham matrix invertible iff $rank(X) = D$ (use SVD $X = USV^T$ if this is not the case to get pseudo-inverse $\mathbf{w^*} = V\tilde{S}U^T$ with $\tilde{S}$ pseudo-inverse of $S$).
 
 \section{Likelihood}
 Probabilistic model $y_n = \mathbf{x_n}^T\mathbf{w} + \epsilon_n$.
@@ -237,3 +237,45 @@ $\pi^{(t+1)} = \frac{1}{N} \sum_n q_{kn}^{(t)}$
 \subsubsection{General}
 $\theta^{(t+1)} := argmax_{\theta} \sum_n^N \mathbb{E}_{p(z_n|x_n,\theta^{(t)})}[log\,\, p(x_n,z_n|\theta)]$
 
+%========================================================================================================
+% Matrix Factorizations
+%========================================================================================================
+\section{Matrix Factorizations}
+\subsection{Prediction}
+Find $\mathbf{X} \approx \mathbf{W}\mathbf{Z}^T$ where $\mathbf{W} \in \mathbb{R}^{D\times K}$ and $\mathbf{Z} \in \mathbb{R}^{N\times K}$ with $K << D,N$. Large $K\rightarrow$ overfitting. If $K \ge max\{D,N\}$ trivial solution ($W=\mathbf{1}_D$ or $Z=\mathbf{1}_N$).
+
+Quality of reconstruction (not jointly convex nor identifiable):\newline $\mathcal{L}(\mathbf{W}, \mathbf{Z}) := \frac{1}{2} \underset{(d,n)\in \Omega}{\sum} [x_{dn} - (\mathbf{W}\mathbf{Z}^T)_{dn}]^2 = \underset{(d,n)\in \Omega}{\sum} f_{dn}(w,z)$
+
+Regularizer: $\Omega(W,Z) = \frac{\lambda_w}{2} ||\mathbf{W}||^2_{Frob} + \frac{\lambda_z}{2} ||\mathbf{Z}||^2_{Frob}$
+
+Optimisation with SGD (compute $\nabla_w$ for a fixed user $d'$ and $\nabla_z$ for a fixed item $n'$). ALS (assume no missing ratings):
+$\mathbf{Z}^T_* = (\mathbf{W}^T\mathbf{W} + \lambda_z I_K)^{-1} \mathbf{W}^T \mathbf{X}$
+$\mathbf{W}^T_* = (\mathbf{Z}^T\mathbf{Z} + \lambda_w I_K)^{-1} \mathbf{Z} \mathbf{X}^T$
+
+\subsection{Text Representation}
+Factorize the co-occurence matrix to get each row forming a representation of a word ($\mathbf{W}$) or a context word ($\mathbf{Z}$) respectively.
+\subsubsection{GloVe}
+$f_{dn} := min\{1,(n_{dn}/n_{max})^\alpha\}, \alpha \in [0;1]$
+\subsubsection{Skipgram/CBOW}
+Binary classification to separate real word pairs from fake ones.
+\subsection{FastText}
+Supervised sentence-level BoW.
+
+%========================================================================================================
+% DIM RED
+%========================================================================================================
+\section{Dimensionality reduction}
+\subsection{SVD}
+$\mathbf{X} = \mathbf{U} \mathbf{S} \mathbf{V}^T$, with $\mathbf{X}: D\times N$, $\mathbf{U}: D\times D$ orthonormal, $\mathbf{V}: N\times N$ orthonormal, $\mathbf{S}: D\times N$ diagonal PSD, values in descending order ($s_1 \ge s_2 \ge \dots \ge s_D \ge 0$).
+
+Reconstruction\newline $||\mathbf{X}-\mathbf{\hat{X}}||_F^2 \ge ||\mathbf{X}-\mathbf{U}_K\mathbf{U}_K^T\mathbf{X}||_F^2 = \underset{i\ge K+1}{\sum} s_i^2$ $\forall$ rank-$K$ matrix $\mathbf{\hat{X}}$ (i.e. \textit{we should compress the data by projecting it onto these left singular vectors.})
+
+Truncated SVD: $\mathbf{U}_K \mathbf{U}_K^T \mathbf{X} = \mathbf{U} \mathbf{S}_K \mathbf{V}^T$
+
+Application to MF: $\mathbf{U} = \mathbf{W}$ and $\mathbf{S}\mathbf{V}^T = \mathbf{Z}^T$. Reconstruction limited by the rank-K of W,Z.
+
+\subsection{PCA}
+Decorrelate the data. Empirical mean before: $N\mathbf{K} = \mathbf{X}\mathbf{X}^T = \mathbf{U}\mathbf{S}_D^2\mathbf{U}^T$.
+After $\mathbf{\tilde{X}} = \mathbf{U}^T\mathbf{X}$: $N\mathbf{\tilde{K}} = \mathbf{\tilde{X}}\mathbf{\tilde{X}}^T = \mathbf{S}_D^2$ (the components are uncorrelated).
+
+Pitfalls: not invariant under scalings.
