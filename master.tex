@@ -41,12 +41,6 @@ leftmargin=0mm,rightmargin=0mm,skipbelow=0mm,skipabove=0mm,
 }
 
 \newcommand{\header}{
-\begin{mdframed}[style=header]
-\footnotesize
-\sffamily
-Cheat sheet\\
-by~Your~Name,~page~\thepage~of~2
-\end{mdframed}
 }
 
 \makeatletter
@@ -89,7 +83,7 @@ by~Your~Name,~page~\thepage~of~2
 %%%%% START CHANGE
 \ifnum\count@=\numexpr\mult@rightbox+2\relax
           \setbox\count@\vsplit\@cclv to \dimexpr \dimen@-1cm\relax
-\setbox\count@\vbox to \dimen@{\vbox to 1cm{\header}\unvbox\count@\vss}%
+\setbox\count@\vbox to \dimen@{\vbox to 0cm{}\unvbox\count@\vss}%
 \else
       \setbox\count@\vsplit\@cclv to \dimen@
 \fi
