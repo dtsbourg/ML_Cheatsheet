@@ -144,20 +144,20 @@ Cumulant
 
 $A(\eta) = ln[\int_y h(y) exp[\eta^T \psi(y)] dy]$
 \newline
-$\nabla A(\eta) = \mathbb{E}[\psi(y)]$
+$\nabla A(\eta) = \mathbb{E}[\psi(y)] = g^{-1}(\eta)$
 \newline
 $\nabla^2 A(\eta) = \mathbb{E}[\psi\psi^T] - \mathbb{E}[\psi]\mathbb{E}[\psi^T]$
 
 Link function
 
-$\eta = g^{-1}(\mu) \Leftrightarrow \mu = g(\eta)$
+$\eta = g(\mu) \Leftrightarrow \mu = g^{-1}(\eta)$
 
-\begin{itemize}
-\item $\eta_{gaussian} = (\mu / \sigma^2, - 1 / 2 \sigma^2)$
-\item $\eta_{poisson} = ln(\mu)$
-\item $\eta_{bernoulli} = ln(\mu / 1 - \mu)$
-\item $\eta_{general} = g^{-1}(\frac{1}{N} \sum_{n=1}^N \psi(y_n))$
-\end{itemize}
+$\eta_{gaussian} = (\mu / \sigma^2, - 1 / 2 \sigma^2)$
+; $\eta_{poisson} = ln(\mu)$
+; $\eta_{bernoulli} = ln(\mu / 1 - \mu)$
+; $\eta_{general} = g^{-1}(\frac{1}{N} \sum_{n=1}^N \psi(y_n))$
+
+$\nabla \mathcal{L}(w) X^T [g^{-1}(Xw)- \psi(y)]= 0$
 
 \subsection{Nearest Neighbor Models}
 Performs best in low dimensions.
