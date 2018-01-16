@@ -11,12 +11,13 @@ Bayes rule $p(x|y) = \frac{p(y|x) p(x)}{p(y)}$
 Logit $\sigma(x) = \frac{\partial ln[1+e^x]}{\partial x}$
 
 Naming
-Joint distribution $p(x,y) = p(x|y)p(y)=p(y|x)p(x)$ where
+Joint distribution $p(x,y) = p(x|y)p(y) = p(y|x)p(x)$ where
 \begin{itemize}
-\item $p(x|y) \rightarrow$ likelihood 
-\item $p(y) \rightarrow$ prior
+\item $p(x|y) \text{ or } p(y|X,w) \rightarrow$ likelihood 
+\item $p(y)  \text{ or } p(w) \rightarrow$ prior
 \item $p(y|x) \rightarrow$ posterior
 \item $p(x) \rightarrow$ marginal likelihood
+\item $p(w|y,X) \rightarrow$ MAP estimator 
 \end{itemize}
 
 Marginal Likelihood \newline $p({\mathbb  {X}}|\alpha )=\int _{\theta }p({\mathbb  {X}}|\theta )\,p(\theta |\alpha )\ \operatorname {d}\!\theta $
