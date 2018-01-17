@@ -18,7 +18,7 @@ Cheatsheet for CS-433 (Machine Learning).
 
 \* Except for Factor Graphs. Feel free to add it but I'm skipping ...
 
-[17/01/2018] : Final version approaching. Watch the commits for the final release.
+[17/01/2018 - 13:18] : Final version is [1335d72](https://github.com/dtsbourg/ML_Cheatsheet/tree/1335d72a9022c37c0675fd0e23e697156bdff126). Good luck for the exam !
 
 # Contributing
 
