@@ -1,5 +1,3 @@
-[IN PROGRESS]
-
 # ML Cheatsheet
 
 Cheatsheet for CS-433 (Machine Learning).
@@ -18,9 +16,9 @@ Cheatsheet for CS-433 (Machine Learning).
 * [x] Neural Nets
 * [x] Graphical Models\*
 
-It still needs quite a bit of clean-up. 
-
 \* Except for Factor Graphs. Feel free to add it but I'm skipping ...
+
+[17/01/2018] : Final version approaching. Watch the commits for the final release.
 
 # Contributing
 
@@ -42,7 +40,8 @@ I am just transcribing this stuff.
   * [jbcdnr](https://github.com/jbcdnr)
   * [gregunz](https://github.com/gregunz)
   * [SebastianSavi](https://github.com/SebastianSavi)
-
+  * [isabelaconstantin](https://github.com/isabelaconstantin)
+  
 # Sneakpeek
 
 ![](https://github.com/dtsbourg/ML_Cheatsheet/raw/master/figs/sneak-recto.png)
