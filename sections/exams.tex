@@ -21,6 +21,7 @@ $p(y_n|x_n,r_n=k,\beta) = \sum_k^K p(y_n,r_n=k|x_n,\beta,\pi) = \sum_k^K p(y_n|r
 
 \subsection{MF}
 $\hat{r}_{um} = \langle\,\mathbf{v}_u,\mathbf{w}_m\rangle + b_u + b_m$
+
 $\mathcal{L} = \frac{1}{2} \sum_{u ~ m}(\hat{r}_{um} -r_{um}) + \frac{\lambda}{2} \big[
 \sum_u (b_u^2+||\mathbf{v}_u||^2) + \sum_m (b_m^2+||\mathbf{w}_m||^2) \big]$. The optimal value for $b_u$ for a particular user $u'$ : $\sum_{u' ~ m} (\hat{r}_{u'm} - r_{u'm}) + \lambda b_{u'} = 0$.
 

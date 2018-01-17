@@ -118,11 +118,11 @@ $\sigma(z) = \frac{e^z}{1+e^z}$ to limit the predicted values $y\in [0;1]$ ($p(1
 
 Likelihood
 
-$p(y | X,w) = \prod p(y_n|x_n) \newline =\underset{n:y_n=0}p(0|x_n)\dots \underset{n:y_n=K}p(K|x_n) \newline = \underset{k}{\prod} \underset{n}{\prod}[p(y_n = k | x_n,w)]^{\tilde{y}_{nk}}$ \newline where ${\tilde{y}_{nk}} = 1$ if $y_n=k$.
+$p(y | X,w) = \prod p(y_n|x_n) \newline =\underset{n:y_n=0}{\prod} p(0|x_n) \dots \underset{n:y_n=K}{\prod} p(K|x_n) \newline = \prod_k \prod_n [p(y_n = k | x_n,w)]^{\tilde{y}_{nk}}$ \newline where ${\tilde{y}_{nk}} = 1$ if $y_n=k$.
 
 For binary classification
 
-$p(y | X, w) = \prod p(y_n|x_n) \newline= \underset{n:y_n=0}{\prod} p(0|x_n) \underset{n:y_n=1}{\prod} p(1|x_n) \newline = \underset{n}{\prod} \sigma({x_n^T w})^{y_n}[1-\sigma({x_n^T w})]^{1-y_n}$
+$p(y | X, w) = \underset{n:y_n=0}{\prod} p(0|x_n) \dots\underset{n:y_n=1}{\prod} p(1|x_n) \newline = \underset{n}{\prod} \sigma({x_n^T w})^{y_n}[1-\sigma({x_n^T w})]^{1-y_n}$
 
 Loss
 
@@ -214,7 +214,7 @@ Marginal likelihood: $z_n$ latent variables => factored out of likelihood \newli
 
 \subsection{EM}
 \subsubsection{GMM}
-Intialise $\mu^{(1)}, \Sigma^{(1)}, \pi^{(1)}$.
+Intialize $\mu^{(1)}, \Sigma^{(1)}, \pi^{(1)}$.
 
 1. E-step: Compute the assignments. $q_{kn}^{(t)} := \frac{\pi_k^{(t)} \mathcal{N}(x_n|\mu_k^{(t)}, \Sigma_k^{(t)})}{ \sum_k^K\pi_k^{(t)} \mathcal{N}(x_n|\mu_k^{(t)}, \Sigma_k^{(t)}) }$
 2. Compute Marginal Likelihood
