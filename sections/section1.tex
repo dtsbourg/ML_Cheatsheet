@@ -6,7 +6,7 @@
 \subsection{Linear Regression}
 % Simple
 % $y_n \approx f(\mathbf{x_n}) := w_0 + w_1 x_{n1}$\newline
-Multiple\newline
+% Multiple\newline
 $f(\mathbf{x_n}) := w_0 + \sum_{j=1}^D w_j x_{nj} = \tilde{\mathbf{x}}_n^T \mathbf{w}$\newline
 If $D > N$ the task is under-determined (more dimensions than data) $\rightarrow$ regularisation.
 
@@ -48,7 +48,7 @@ $\mathbf{g} = \frac{1}{|B|} \sum_{n\in B}{\nabla \mathcal{L}}_n(\mathbf{w}^{(t)}
 
 \subsection{Subgradient at $w$}
 
-$\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. 
+$\mathbf{g} \in \mathbb{R}^D$ with $\mathcal{L}(u) \ge \mathcal{L}(w) + \mathbf{g}^T (u-w)$. 
 
 % Example subgradient for MAE: $h(e) = |e| \rightarrow g(e) = {sgn(e) \text{ if } e \ne 0, \lambda \in [-1;1] \text{ otherwise }}$. We get the gradient:\newline $\nabla \mathcal{L}_{MAE} = - \frac{1}{N} \sum_n sgn(y-f(x_n)) \nabla f(x_n)$.
 
@@ -57,15 +57,14 @@ $\mathbf{g} \in \mathbb{R}^D$ such that $\mathcal{L}(u) \ge \mathcal{L}(w) + \ma
 $\mathbf{w}^{(t+1)} = \mathcal{P_C} [\mathbf{w}^{(t)} - \gamma \nabla \mathcal{L}(\mathbf{w}^{(t)})]$
 
 \subsection{Newton's method}
-Second order (more expensive $O(ND^2 + D^3)$ but faster convergence).
+2nd order (more expensive \newline $O(ND^2 + D^3)$ but faster convergence).
 
 $w^{(t+1)} = w^{(t)} - \gamma^{(t)} (H^{(t)})^{-1} \nabla \mathcal{L}(w^{(t)})$
-
 
 \subsection{Optimality conditions}
 Necessary : $\nabla \mathcal{L} (\mathbf{w}^*) = 0$
 Sufficient : Hessian PSD $\mathbf{H}(\mathbf{w}^*) := \frac{\partial^2 \mathcal{L}(\mathbf{w}^*)}{\partial w \partial w^T}$
-
+\newline
 %========================================================================================================
 % LEAST SQUARES
 %========================================================================================================
@@ -88,8 +87,8 @@ Best model maximises log-likelihood $\mathcal{L}_{LL} = -\frac{1}{2\sigma^2} \su
 %========================================================================================================
 \section{Regularisation}
 \subsection{Ridge Regression}
-$\mathcal{L}(\mathbf{w}) = \frac{1}{2} (\mathbf{y} - X\mathbf{w})^T(\mathbf{y} - X\mathbf{w}) + \frac{\lambda}{2} ||\mathbf{w}||^2_2 \rightarrow$
-$\mathbf{w^*_{ridge}} = (XX^T + \lambda I_D)^{-1}X^T\mathbf{y}$\newline $= X^T(XX^T + \lambda I_N)^{-1}\mathbf{y}$
+$\mathcal{L}(\mathbf{w}) = \frac{1}{2N} (\mathbf{y} - X\mathbf{w})^T(\mathbf{y} - X\mathbf{w}) + \frac{\lambda}{2} ||\mathbf{w}||^2_2 \rightarrow$
+$\mathbf{w^*_{ridge}} = (X^TX + 2N\lambda I)^{-1}X^T\mathbf{y}$\newline
 
 Can be considered a MAP estimator : $\mathbf{w^*_{ridge}} = arg min_w - log(p(w|X,y))$
 
@@ -159,7 +158,7 @@ $\eta_{gaussian} = (\sfrac{\mu}{\sigma^2}, -\sfrac{1}{2 \sigma^2})$
 
 $\nabla \mathcal{L}(w) X^T [g^{-1}(Xw)- \psi(y)]= 0$
 
-\subsection{Nearest Neighbor Models}
+\subsection{Nearest Neighbour Models}
 Performs best in low dimensions.
 \subsubsection{k-NN}
 $f_{S^{t,k}}(x) = \frac{1}{k} \sum_{n:x_n\in ngbh_{S{t,k}(x)}} y_n$
@@ -215,7 +214,7 @@ Marginal likelihood: $z_n$ latent variables => factored out of likelihood \newli
 
 \subsection{EM}
 \subsubsection{GMM}
-Intialize $\mu^{(1)}, \Sigma^{(1)}, \pi^{(1)}$.
+Intialise $\mu^{(1)}, \Sigma^{(1)}, \pi^{(1)}$.
 
 1. E-step: Compute the assignments. $q_{kn}^{(t)} := \frac{\pi_k^{(t)} \mathcal{N}(x_n|\mu_k^{(t)}, \Sigma_k^{(t)})}{ \sum_k^K\pi_k^{(t)} \mathcal{N}(x_n|\mu_k^{(t)}, \Sigma_k^{(t)}) }$
 2. Compute Marginal Likelihood
@@ -227,7 +226,7 @@ $\Sigma^{(t+1)} = \frac{\underset{n}{\sum} q_{kn}^{(t)}(x_n - \mu^{(t+1)})(x_n -
 \newline
 
 \subsubsection{General}
-$\theta^{(t+1)} := argmax_{\theta} \underset{n}{\sum} \mathbb{E}_{p(z_n|x_n,\theta^{(t)})}\newline[log\,\, p(x_n,z_n|\theta)]$
+$\theta^{(t+1)} := argmax_{\theta} \underset{n}{\sum} \mathbb{E}_{p(z_n|x_n,\theta^{(t)})}\newline[log\,\, p(x_n,z_n|\theta)]$\newline
 
 %========================================================================================================
 % Matrix Factorizations

@@ -29,8 +29,9 @@ LL:\newline $p(\mathbf{y}|X, \mathbf{\beta}, \mathbf{r}) = \underset{n}{\prod} \
 For $p(r_n = k | \mathbf{\pi}) = \pi_k$: \newline
 $p(y_n|\mathbf{x}_n, \mathbf{\beta}, \mathbf{\pi}) = \underset{k}{\sum} p(y_n, r_n = k| \mathbf{x}_n, \beta, \mathbf{\pi}) \newline = \underset{k}{\sum} p(y_n | r_n = k, \mathbf{x}_n, \beta, \pi) \cdot \pi_k \newline = \underset{k}{\sum} \mathcal{N}(y_n|\beta^T_k \mathbf{\tilde{x}}_n, \sigma^2) \pi_k$.\\
 
-$- log p(\mathbf{y} | X, \beta, \mathbf{\pi}) = -\underset{n}{\sum} log \underset{k}{\sum} \mathcal{N}(y_n|\beta^T_k \mathbf{\tilde{x}}_n, \sigma^2) \cdot \pi_k$.
-Model is not convex as a sum of gaussians. Not identifiable by permutation of labels.
+$- log p(\mathbf{y} | X, \beta, \mathbf{\pi}) \newline= -\underset{n}{\sum} log \underset{k}{\sum} \mathcal{N}(y_n|\beta^T_k \mathbf{\tilde{x}}_n, \sigma^2) \cdot \pi_k$.
+
+Model is not convex (sum of gaussians). Not identifiable (by permutation of labels).
 
 
 

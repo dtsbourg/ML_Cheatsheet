@@ -14,9 +14,6 @@ $ w_k^* = (\frac{1}{\sigma_k^2} XX^T+I_D)^{-1} \frac{1}{\sigma_k^2}Xy_k$
 $\mathcal{L}(w) = \sum_k \sum_n \frac{1}{2\sigma_k^2} (y_{nk} - x_n^T w_k)^2 + \frac{1}{2} \sum_k ||w_k||^2_2 \rightarrow$
 Likelihood $p(y|X,w) = \prod_n \prod_k \mathcal{N}(y_{nk}|w_k^Tx_n, \sigma_k^2)$ and prior $p(w) = \prod_k \mathcal{N}(w_k|0,I_D)$
 
-\subsection{Convexity}
-$ln[\sum_k^Ke^{t_k}]$ is convex
-
 \subsection{Deriving marginal distribution}
 $p(y_n|x_n,r_n=k,\beta) = \mathcal{N} (y_n|\beta_k^T\tilde{x}_n,1)$
 Assume $r_n$ follows a multinomial $p(r_n=k|\pi)$. Derive the marginal $p(y_n|x_n,\beta,\pi)$.
@@ -41,14 +38,14 @@ Problem jointly convex? Compute $H(\hat{r}({v,w})) = \begin{bmatrix} 2w^2 & 4vw-
 \item $max\{ 0, x\} = \underset{{\alpha \in [0,1]}}{max} \,\, \alpha x$ \newline $min\{ 0, x\} = \underset{{\alpha \in [0,1]}}{min}\,\,  \alpha x$
 \item $g(x) = \underset{y}{min}\,\, f(x,y) \Rightarrow g(x) \le f(x,y)$
 \item $\underset{x}{max}\,\, g(x) \le \underset{x}{max} \,\,f(x,y)$ \newline
-\item $\underset{x}{max} \,\, \underset{y}{min}  f(x,y) \le \underset{y}{min} \,\, \underset{x}{max} f(x,y)$
+\item $\underset{x}{max} \,\, \underset{y}{min} \,\, f(x,y) \newline \le \underset{y}{min} \,\, \underset{x}{max} \,\, f(x,y)$\newline
 \item $\nabla_{W} (\mathbf{x}^T\mathbf{W}\mathbf{x}) = \mathbf{x}\mathbf{x}^T$
 \item $\nabla_{x} (\mathbf{x}^T\mathbf{W}\mathbf{x}) = (\mathbf{W}+\mathbf{W}^T)\mathbf{x}$
 \item K-means: optimal cluster (resp. centers) init $\rightarrow$ one step optimal representation points (resp. clusters).
 \item Logistic loss is typically preferred over $L_2$ loss in classification tasks.
-\item For optimizing a MF of a $D\times N$ matrix, for large $D$, $N$ : \textit{per iteration, ALS has an increased computational cost over SGD} and \textit{per iteration, SGD cost is independent of D, N}.
+\item For optimising a MF of a $D\times N$ matrix, for large $D$, $N$ : \textit{per iteration, ALS has an increased computational cost over SGD} and \textit{per iteration, SGD cost is independent of D, N}.
 \item The complexity of backprop for a nn with $L$ layers and $K$ nodes/layer is $O(K^2L)$
-\item CNN where the data is laid out in a one-dimensional fashion and the filter/kernel has M non-zero terms. Ignoring the bias terms, there are $M$ parameters.
+\item CNN where the data is laid out in a one-dimensional fashion and the filter/kernel has $M$ non-zero terms. Ignoring the bias terms, there are $M$ parameters.
 \end{itemize}
 
 \subsection{Convex functions}
@@ -61,6 +58,7 @@ Problem jointly convex? Compute $H(\hat{r}({v,w})) = \begin{bmatrix} 2w^2 & 4vw-
 \item $f(x) = ax+b, x \in \mathbb{R}, \forall a,b \in \mathbb{R}$
 \item $f(x) = |x|^p, x \in \mathbb{R}, p\ge 1$
 \item $f(x) = xlog(x), x \in \mathbb{R}^+$
+\item $ln[\sum_k^Ke^{t_k}]$
 \end{itemize}
 
 \subsection{Non-convex functions}
