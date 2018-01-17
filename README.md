@@ -35,7 +35,13 @@ I am just transcribing this stuff.
 
 # Acknowledgements
 
-Thanks to Tim for the awesome LaTeX template ! [StackOverflow answer](https://stackoverflow.com/questions/1911516/how-to-make-cheat-sheets-in-latex)
+* Thanks to Tim for the awesome LaTeX template ! [StackOverflow answer](https://stackoverflow.com/questions/1911516/how-to-make-cheat-sheets-in-latex)
+
+* Thanks to the people who contributed !
+  * [Mgt-A](https://github.com/Mgt-A)
+  * [jbcdnr](https://github.com/jbcdnr)
+  * [gregunz](https://github.com/gregunz)
+  * [SebastianSavi](https://github.com/SebastianSavi)
 
 # Sneakpeek
 
