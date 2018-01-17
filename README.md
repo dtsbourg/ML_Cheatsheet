@@ -42,7 +42,8 @@ I am just transcribing this stuff.
   * [jbcdnr](https://github.com/jbcdnr)
   * [gregunz](https://github.com/gregunz)
   * [SebastianSavi](https://github.com/SebastianSavi)
-
+  * [isabelaconstantin](https://github.com/isabelaconstantin)
+  
 # Sneakpeek
 
 ![](https://github.com/dtsbourg/ML_Cheatsheet/raw/master/figs/sneak-recto.png)
